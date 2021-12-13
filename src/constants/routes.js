@@ -1,0 +1,9 @@
+export const HOME = '/';
+export const APP = '/app';
+export const DASHBOARD = 'dashboard';
+export const WORKSPACE = '/workspace';
+export const PROFILE = 'profile';
+export const MEMBERS = 'members';
+export const BILLING = 'billing';
+export const SIGN_IN = '/signin';
+export const SIGN_UP = '/signup';

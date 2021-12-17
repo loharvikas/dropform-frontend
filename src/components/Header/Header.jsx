@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Frame, Group, LogoText, LinkText, ButtonLink, LogoContainer } from './Header.styles';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 export default function Header({ children, ...restProps }) {
     return <Container {...restProps }>{ children }</Container>
@@ -13,9 +14,9 @@ Header.Group = function HeaderGroup({ children, ...restProps }) {
     return <Group {...restProps }>{ children }</Group>
 }
 
-Header.LogoText = function HeaderLogoText({LogoSvg, children, ...restProps }) {
+Header.LogoText = function HeaderLogoText({to, LogoSvg, children, ...restProps }) {
     return (
-        <LogoContainer>
+        <LogoContainer to={to}>
             <LogoSvg />
             <LogoText {...restProps }>{ children }</LogoText>
         </LogoContainer>
@@ -27,6 +28,10 @@ Header.LinkText = function HeaderLinkText({ children, ...restProps }) {
 }
 
 
-Header.ButtonLink = function HeaderButtonLink({ primary, children, ...restProps }) {
-    return <ButtonLink primary={primary} {...restProps }>{ children }</ButtonLink>
+Header.ButtonLink = function HeaderButtonLink({ to, primary, children, ...restProps }) {
+    return (
+        <ReactRouterLink to={to}>
+            <ButtonLink primary={primary} {...restProps }>{ children }</ButtonLink>
+        </ReactRouterLink>
+    )
 }

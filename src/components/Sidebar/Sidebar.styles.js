@@ -1,22 +1,37 @@
 import styled from "styled-components/macro";
-import { Link as ReactRouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
     width: 250px;
-    border-right: 1px solid lightgray;
+    border-right: var(--primary-border);
     height: 100vh;
     overflow-y:scroll;
     overflow-x: hidden;
-    padding: 0 10px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
 `;
 
+export const SideBarBreak = styled.div`
+    width: 250px;
+    height: 100vh;
+`
+
+
 export const Header = styled.header`
+    background-color: var(--bg-secondary);
     display: flex;
+    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid lightgray;
+    border-bottom:  var(--primary-border);
     height: 50px;
     margin-bottom: 10px;
-
+    position: sticky;
+    top: 0;
+    left:0;
+    right: 0;
+    z-index:999;
 `;
 
 export const Image = styled.img`
@@ -28,34 +43,38 @@ export const Title = styled.h1`
     font-size: 16px;
     font-weight: bold;
     margin-left: 5px;
+    color: var(--txt-primary);
 `;
 
 export const Items = styled.div`
     display: flex;
     flex-direction: column;
+    padding: 0 10px;
 `;
 
 export const ItemsTitle = styled.h3`
     font-weight: 500;
     text-align: center;
     margin-bottom: 10px;
-    border-bottom: 1px solid lightgray;
+    border-bottom: var(--secondary-border);
     padding: 10px 0;
 `;
 
 
-export const TextLink = styled(ReactRouterLink)`
+export const TextLink = styled.div`
     text-decoration: none;
-    color: #1C1C1C;
+    color: var(${({active}) => active==='true' ? '--txt-primary' : '--txt-secondary'});
+    cursor: pointer;
     font-weight: 400;
     margin-bottom: 10px;
-    text-align: center;
-    padding: 5px 10px;
+    text-align: left;
+    padding: 10px 10px;
     border-radius: 3px;
-    background-color: ${({active}) => active==='true' ? ' #EAEAEA' : 'transparent'};
+    background-color: ${({active}) => active==='true' ? '#edecfa' : 'transparent'};
 
     &:hover {
-        background-color: #EAEAEA ;
+        background-color: #edecfa;
+        color: var(--txt-primary);
     }
 `;
 
@@ -63,15 +82,21 @@ export const Button = styled.button`
     width: 100%;
     border: none;
     border-radius: 3px;
-    padding: 5px 0;
+    padding: 10px 0;
     margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #edecfa;
+    width: 90%;
+    align-items: center;
     cursor: pointer;
+    margin: 0 auto;
+    margin-bottom: 10px;
     
     & svg {
         width: 20px;
         height:20px;
         stroke-width: 10px;
-        fill: gray;
     }
 
     &:hover {
@@ -86,6 +111,8 @@ export const TextInput = styled.input`
     border: 1px solid lightgray;
     border-radius: 3px;
     padding: 5px 10px;
+    width: 90%;
+    margin: 10px auto;
     &::placeholder {
         color: lightgray;
     }

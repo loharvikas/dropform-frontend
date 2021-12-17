@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect }from 'react';
+import { WorkspaceContainer } from '.';
 
-const DashboardContainer = () => {
+const DashboardContainer = ({ workspace }) => {
+    useEffect(() => {
+        document.title = 'Dashboard -Formstack'
+    }, [])
+    
     return (
-        <div>
-            Dashboard
-        </div>
+        <>
+        { workspace &&
+            <WorkspaceContainer workspace={workspace}/>
+        }
+        </>
     )
 }
 
 
-export default DashboardContainer
+export default DashboardContainer;

@@ -5,7 +5,8 @@ import { Routes, Route } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import { DashboardContainer, MembersContainer} from '.';
 
-const AppContainer = ({ children, workspace }) => (
+const AppContainer = ({ workspace }) => (
+    
     <AppWrapper direction='column'>
        <Header main='false'>
             <Header.Frame>
@@ -16,13 +17,16 @@ const AppContainer = ({ children, workspace }) => (
                     <Header.LinkText to={ROUTES?.PROFILE}>Profile</Header.LinkText>
                 </Header.Group>
                 <Header.Group>
-                    <Header.ButtonLink primary='true'>Signout</Header.ButtonLink>
+                    <Header.ButtonLink primary='false' to={ROUTES.SIGN_OUT}>Signout</Header.ButtonLink>
                 </Header.Group>
             </Header.Frame>
         </Header>
         <GlobalWrapper>
             <Routes>
-                <Route path={ROUTES.DASHBOARD} element={<DashboardContainer />} />
+                <Route 
+                    path={ROUTES.DASHBOARD + '/*'} 
+                    element={<DashboardContainer workspace={workspace}/>} 
+                />
                 <Route path={ROUTES.MEMBERS} element={<MembersContainer />} />
             </Routes>
         </GlobalWrapper>

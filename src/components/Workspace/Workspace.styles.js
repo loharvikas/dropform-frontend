@@ -4,6 +4,7 @@ import { GlobalButton } from "../../globalStyles";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
+    margin: 0 20px;
     margin-top: 70px;
     color: var(--txt-primary);
 `;
@@ -24,14 +25,33 @@ export const Title = styled.h1``;
 export const Button = styled(GlobalButton)`
     margin-left: 10px;
     padding: 8px 10px;
-    background-color:var(${({ danger }) => danger==='true' ? '--bg-danger' : '--btn-color-2'});
-    border: var(${({ danger }) => danger==='true' ? '--danger-border' : 'none'});
+
+    background-color:var(--btn-color-2);
+    border: 1px solid var(--btn-color-2);
     :last-of-type {
         margin-right: 0;
     }
-    color: ${({ danger }) => danger==='true' ? 'red' : '#fff'};
-    &:hover {
-        filter: brightness(150%);
+    color: #fff;
+    transition: background 300ms linear;
+
+    &:hover{
+        background-color: var(--bg-primary);
+        color: var(--btn-color-2);
+        border: 1px solid var(--btn-color-2);
+        filter: none;
+    }
+
+    ${({ danger }) => danger === 'true' && `
+        background-color: var(--bg-danger);
+        border: var(--danger-border);
+        color: red;
+
+        &:hover {
+            background-color: red;
+            color: #fff;
+            border: var(--danger-border);
+        }
+    `
     }
 `;
 
@@ -40,26 +60,12 @@ export const Items = styled.div`
     background-color: white;
     box-shadow: var(--box-shadow);
     margin-top: 20px;
-    background-color: var(--txt-primary);
-    color: #ffffff;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     padding: 10px;
-    max-height: 500px;
+    max-height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
-
-
-    &::-webkit-scrollbar {
-        width: 0.3rem;
-    }
-
-    &::-webkit-scrollbar-track {
-    background: #1e1e24;
-    }
-
-    &::-webkit-scrollbar-thumb {
-    background: #6649b8;
-    }
+    border: 3px solid var(--txt-primary);
 `;
 
 export const Item = styled.div`
@@ -69,13 +75,14 @@ export const Item = styled.div`
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
-    transition: background 300ms linear;
+    transition: background 200ms linear;
     border-radius: 5px;
     margin-bottom: 10px;
+    color:var(--txt-primary);
 
     &:hover {
-        background-color:#F2FDFA;
-        color: var(--txt-primary);
+        background-color:#F7F5F9;
+        filter: hue-rotate(45deg)
     }
 
     &::last-of-type {

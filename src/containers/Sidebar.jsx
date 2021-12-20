@@ -3,6 +3,7 @@ import { Sidebar } from '../components';
 import { PlusSVG } from '../assets/plus';
 import { AuthContext } from '../context/AuthContext';
 import axiosInstance from '../lib/axios';
+import * as ROUTES from '../constants/routes';
 
 const SidebarContainer = ({ workspace, setWorkspace }) => {
     const [ value, setValue ] = useState('');
@@ -33,22 +34,25 @@ const SidebarContainer = ({ workspace, setWorkspace }) => {
         return () => document.removeEventListener('keydown', createWorkspace);
     }, [createWorkspace])
     
+    
     useEffect(() => {
         axiosInstance
             .get(`workspace/${user.id}`)
             .then(res => {
                 setWorkspaceList(res.data);
+                setWorkspace(res.data.length > 0 ? res.data[0] : null)
             })
             .catch(error => {
                 console.error(error)
             });
         
-    }, [user.id]);
+    }, [user.id, setWorkspace]);
 
 
     const handleChange = e => {
         setValue(e.target.value);
     }
+    
     
     return (
         <Sidebar>
@@ -68,6 +72,7 @@ const SidebarContainer = ({ workspace, setWorkspace }) => {
                             key={item.id}
                             onClick={() => setWorkspace(item)}
                             active={item.id === workspace?.id ? 'true' : 'false'}
+                            to={ROUTES.DASHBOARD}
                         >
                             {item.name}
                         </Sidebar.TextLink>

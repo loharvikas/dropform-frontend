@@ -19,7 +19,7 @@ export const Frame = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 55px;
+    margin: 0px 20px;
     padding: 12px 0;
     height: 100%;
 

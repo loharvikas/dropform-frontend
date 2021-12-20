@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { Form, Header } from '../components';
 import { Break } from '../globalStyles';
@@ -11,16 +10,15 @@ const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
     const { setUser, setAuthTokens } = useContext(AuthContext); 
-    const navigate = useNavigate();
 
     const isInValid = email === '' || password === '';
 
     const handleSubmit = e => {
         e.preventDefault();
         setLoading(true);
-        setError('');
+        setMessage('');
         
         const payload = {
             email: email,
@@ -33,13 +31,13 @@ const Signin = () => {
                 const data = res.data;
                 setAuthTokens({access_token: data.access, refresh_token: data.refresh})
                 setUser(data.user)
-                console.log('Bearer' + data.access)
                 axiosInstance.defaults.headers['Authorization']=
                     'Bearer ' + data.access
-                navigate('app/dashboard/');
+                setLoading(false);
             })
             .catch((error) => {
-                setError(error);
+                setLoading(false)
+                setMessage('Email address or password is invalid please check!');
             })
     }
     
@@ -56,25 +54,33 @@ const Signin = () => {
             <Form>
                 <Form.Wrapper>
                     { loading && <Form.Loader /> }
-                    <Form.Title>Sign In</Form.Title>
-                    { error && <Form.Error>{ error }</Form.Error>}
+                    <Form.Title>Welcome back!</Form.Title>
+                    { message && <Form.Alert type='Error'>{ message }</Form.Alert>}
                     <Form.Base onSubmit={handleSubmit}>
+                        <Form.Label htmlFor='email'>
+                            Email Address
+                        </Form.Label>
                         <Form.Input 
+                            id='email'
                             type='email'
-                            placeholder='Email'
+                            placeholder='Enter your email addess...'
                             value={email}
                             onChange={({ target }) => setEmail(target.value)}
                         />
+                        <Form.Label htmlFor='password'>
+                            Password
+                        </Form.Label>
                         <Form.Input 
+                            id='password'
                             type='password'
-                            placeholder='Password'
+                            placeholder='Enter your password...'
                             value={password}
                             autoComplete='off'
                             onChange={({ target }) => setPassword(target.value)}
                         />
                         <Form.Link to={ROUTES.SIGN_UP}>Forget password ?</Form.Link>
                         <Form.Submit disabled={isInValid} type='submit'>
-                            Sign In
+                            Sign in
                         </Form.Submit>
                     </Form.Base>
                     <Form.Text>

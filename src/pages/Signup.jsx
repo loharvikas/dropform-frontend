@@ -11,7 +11,7 @@ const Signup = () => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const { setUser, setAuthTokens } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Signup = () => {
     const handleSubmit = e => {
         e.preventDefault();
         setLoading(true)
-        setError('')
+        setMessage('')
         axiosInstance.defaults.headers['Authorization']= null;
         const payload = Object.freeze({
             'full_name': fullName,
@@ -43,7 +43,7 @@ const Signup = () => {
             })
             .catch(error => {
                 setLoading(false)
-                setError(error.response.data.email)
+                setMessage(error.response.data.email)
             })
     }
     
@@ -61,23 +61,35 @@ const Signup = () => {
                 <Form.Wrapper>
                     { loading && <Form.Loader /> }
                     <Form.Title>Create an account</Form.Title>
-                    { error && <Form.Error>{ error }</Form.Error>}
+                    { message && <Form.Alert type='Error'>{ message }</Form.Alert>}
                     <Form.Base onSubmit={handleSubmit}>
+                        <Form.Label htmlFor='name'>
+                            Your Name
+                        </Form.Label>
                         <Form.Input 
+                            id='name'
                             type='text'
-                            placeholder='Full Name'
+                            placeholder='Enter your name..'
                             value={fullName}
                             onChange={({ target }) => setFullName(target.value)}
                         />
+                        <Form.Label htmlFor='email'>
+                            Your email address
+                        </Form.Label>
                         <Form.Input 
+                            id='email'
                             type='email'
-                            placeholder='Email'
+                            placeholder='Enter your email address...'
                             value={email}
                             onChange={({ target }) => setEmail(target.value)}
                         />
+                        <Form.Label htmlFor='password'>
+                            Yout password
+                        </Form.Label>
                         <Form.Input 
+                            id='password'
                             type='password'
-                            placeholder='Password'
+                            placeholder='Enter your password...'
                             value={password}
                             autoComplete='off'
                             onChange={({ target }) => setPassword(target.value)}

@@ -2,12 +2,12 @@ import styled, { createGlobalStyle } from 'styled-components/macro'
 
 export const  GlobalStyles = createGlobalStyle`
     :root {
-        --bg-primary: #F8FAFF;
+        --bg-primary: #f0f3fd;
         --bg-secondary: #fff;
         --bg-dashboard: #edecfa;
         --bg-danger: #F9F9F9;
         --bg-type: lightgray;
-        --txt-primary: #334254;
+        --txt-primary: #0e1952;
         --txt-secondary: #939393;
         --link-color: #4B4ACF;
         --btn-color-1: #4B4ACF;
@@ -34,6 +34,7 @@ export const  GlobalStyles = createGlobalStyle`
         font-size: 16px;
         position: relative;
         background-color: var(--bg-primary);
+        overflow-x: hidden;
     }
 
     body::-webkit-scrollbar {
@@ -48,14 +49,19 @@ export const  GlobalStyles = createGlobalStyle`
     background: #6649b8;
     }
 
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
 `
 
 
 export const GlobalWrapper = styled.div`
-    display:flex;
+    display: flex;
     flex-direction: column;
-    width: 90%;
-    margin: 1rem auto;
+    height: 100%;
+    padding: 0 10px;
 `
 
 export const AppWrapper = styled.div`

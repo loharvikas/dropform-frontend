@@ -1,0 +1,30 @@
+.table-header {
+    font-weight: 700;
+    color:#fff;
+}
+.MuiDataGrid-columnHeadersInner {
+    background-color: var(--txt-primary);
+    color:var(--txt-primary);
+}
+
+.MuiDataGrid-columnHeadersInner svg {
+    fill: white;
+}
+.table-header .MuiDataGrid-columnHeaderTitle {
+    font-weight: 700;
+}
+
+.MuiDataGrid-columnHeaders {
+    max-height: 40px;
+}
+
+.super-app-theme--cell {
+    cursor: pointer;
+    border: 1px solid var(--bg-primary);
+    padding: 1px;
+}
+
+
+.new-world:hover {
+    border: 1px solid var(--txt-primary);
+}

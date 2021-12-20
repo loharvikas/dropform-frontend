@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 export const Container = styled.div`
     width: 250px;
@@ -7,14 +8,15 @@ export const Container = styled.div`
     overflow-y:scroll;
     overflow-x: hidden;
     text-align: center;
+    background-color: #fff;
     position: fixed;
-    left: 0;
-    bottom: 0;
-    top: 0;
+    left:0;
+    top:0;
+    bottom:0;
 `;
 
 export const SideBarBreak = styled.div`
-    width: 250px;
+    width: 302px;
     height: 100vh;
 `
 
@@ -61,7 +63,7 @@ export const ItemsTitle = styled.h3`
 `;
 
 
-export const TextLink = styled.div`
+export const TextLink = styled(ReactRouterLink)`
     text-decoration: none;
     color: var(${({active}) => active==='true' ? '--txt-primary' : '--txt-secondary'});
     cursor: pointer;

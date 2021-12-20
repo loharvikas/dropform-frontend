@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Form } from '../components';
 import { FormSVG } from '../assets/forms';
-import { Workspace, Feature } from '../components';
+import { Workspace } from '../components';
 import axiosInstance from '../lib/axios';
 import { Close, Inner, OverLay } from '../globalStyles';
 import { getDatetime } from '../utils/helper';
-import { DangerButton } from '../globalStyles';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../constants/routes'
 
 const WorkspaceContainer = ({ workspace }) => {
     const [forms, setForms] = useState([]);
@@ -28,6 +29,10 @@ const WorkspaceContainer = ({ workspace }) => {
         }
     }, [workspace])
 
+    useEffect(() => {
+        document.title = 'Dashboard -Formstack'
+    }, [])
+
     const handleSubmit = e => {
         e.preventDefault();
         setLoading(true);
@@ -46,9 +51,6 @@ const WorkspaceContainer = ({ workspace }) => {
                 setError(err)
             })
     }
-    
-    
-    console.log('Whats happeining')
     return (
         <>
             { workspace &&
@@ -93,15 +95,17 @@ const WorkspaceContainer = ({ workspace }) => {
                 { forms.length > 0 &&
                 <Workspace.Items>
                     { forms.map(item => (
-                        <Workspace.Item key={item.id} >
-                            <Workspace.Group>
-                                <FormSVG />
-                                <Workspace.ItemTitle>{item.name}</Workspace.ItemTitle>
-                            </Workspace.Group>
-                            <Workspace.Group>
-                                <Workspace.ItemDate>{ getDatetime(item.created_date)}</Workspace.ItemDate>
-                            </Workspace.Group>
-                        </Workspace.Item>
+                        <Link to={ROUTES.FORMS + `${item.uuid}`} key={item.id}>
+                            <Workspace.Item>
+                                <Workspace.Group>
+                                    <FormSVG />
+                                    <Workspace.ItemTitle>{item.name}</Workspace.ItemTitle>
+                                </Workspace.Group>
+                                <Workspace.Group>
+                                    <Workspace.ItemDate>{ getDatetime(item.created_date)}</Workspace.ItemDate>
+                                </Workspace.Group>
+                            </Workspace.Item>
+                        </Link>
                     ))}
                 </Workspace.Items>
                 }

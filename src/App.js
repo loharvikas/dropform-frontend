@@ -14,7 +14,7 @@ function App() {
             <Route 
                 path={ROUTES.HOME}
                 element={
-                    <IsRedirectUser loggedInPath={ROUTES.APP}>
+                    <IsRedirectUser loggedInPath={ROUTES.REDIRECT}>
                       <Home />
                     </IsRedirectUser>
                 }
@@ -25,17 +25,18 @@ function App() {
                       <Product />
                     </ProtectedRoutes>
                     }
-            />
+            >
+            </Route>
 
             <Route path={ROUTES.SIGN_IN} 
                   element={ 
-                  <IsRedirectUser loggedInPath={ROUTES.APP}>
+                  <IsRedirectUser loggedInPath={ROUTES.REDIRECT}>
                       <Signin />
                   </IsRedirectUser>} 
                 />
             <Route path={ROUTES.SIGN_UP}  
                   element={ 
-                  <IsRedirectUser loggedInPath={ROUTES.APP}>
+                  <IsRedirectUser loggedInPath={ROUTES.REDIRECT}>
                       <Signup />
                   </IsRedirectUser>} 
                 />

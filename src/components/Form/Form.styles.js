@@ -11,15 +11,15 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: var(--bg-secondary);
-    margin-top: 100px;
+    margin: 0 auto;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
-    padding: 30px 50px;
-    width: 500px;
-    position: relative;
+    padding: 25px 50px;
+    width: ${({ type }) => type==='subForm' ? '900px': '500px'};
 `
 
 export const LoaderWrapper = styled.div`
@@ -84,13 +84,28 @@ export const Base = styled.form`
 
 export const Title = styled.h1`
     color:var(--txt-primary);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 24px;
+
+    ${({ type }) => type === 'subForm' && `
+        font-size: 35px;
+        text-align:left;
+    `}
 `;
 
 export const Text = styled.p`
     color: var(--txt-secondary);
     text-align: center;
     margin-bottom: 5px;
+
+    ${({ type }) => type==='subForm' && `
+        font-weight:500;
+        text-align:left;
+        font-size:14px;
+        margin-bottom:0px;
+        margin-top:5px;
+    `}
 `;
 
 export const Link = styled(ReactRouterLink)`
@@ -99,7 +114,16 @@ export const Link = styled(ReactRouterLink)`
     font-size: 14px;
 `;
 
-export const SmallText = styled.small``;
+export const Label = styled.label`
+    color:var(--txt-primary);
+    font-weight: 500;
+    margin-bottom:10px;
+
+    ${({ type }) => type==='subForm' && `
+        font-size:20px;
+        margin-bottom:5px;
+    `}
+`
 
 export const Input = styled.input`
     width: 100%;
@@ -121,22 +145,53 @@ export const Input = styled.input`
     }
 
     &:focus {
-        /* outline: var(--secondary-border); */
         border: var(--secondary-border);
     }
 
+    ${({ formType }) => formType==='subForm' && `
+        margin-top:10px;
+        margin-bottom:0px;
+    `}
+
 `;
 
-export const Error = styled.div`
-    border: var(--danger-border);
+export const Alert = styled.div`
     padding: 10px;
-    margin-bottom: 20px;
-    background-color: rgba(255, 131, 134, 0.4);
-    color: rgba(255, 131, 134, 0.4);
-    color: var(--txt-primary);
+    margin-bottom: 20px;        
     font-size: 14px;
+    ${({type}) =>  type==='Error' && `
+        border: var(--danger-border);
+        background-color: rgba(255, 131, 134, 0.4);
+        color: var(--txt-primary);
+    `}
+
+    ${({type}) =>  type==='Success' && `
+        border: var(--success-border);
+        background-color: rgba(4, 185, 83 , 0.1);
+        color: var(--txt-primary);
+    `}
 `;
 
 export const Submit = styled(GlobalButton)`
-    margin: 10px 0; 
+    margin: 15px 0; 
+    padding: 15px 0px;
+    font-weight: 600;
+
+    /* &:hover {
+        filter: brightness(1.2)
+    } */
+
+    ${({ formType }) => formType==='subForm' && `
+        font-size:14px;
+
+        padding: 8px 20px;
+        margin-top:0;
+        margin-right:10px;
+    `}
+
+    ${({ subType }) => subType==='secondary' && `
+        background-color:#fff;
+        border:1px solid lightgray;
+        color:black;
+    `}
 `;

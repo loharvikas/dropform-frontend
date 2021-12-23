@@ -8,9 +8,11 @@ import { Home, App as Product, Signin, Signup} from './pages';
 function App() {
   return (
     <>
+
       <AuthProvider>
         <Router>
           <Routes>
+
             <Route 
                 path={ROUTES.HOME}
                 element={

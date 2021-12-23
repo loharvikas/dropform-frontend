@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Wrapper, LoaderWrapper, Loader, Base, Title, Text, Label, Link , Input, Alert, Submit} from './Form.styles';
+import { Container, Wrapper, LoaderWrapper, TextArea, Loader, Base, Title, Text, Label, Link , Input, Error, Submit} from './Form.styles';
 
 export default function Form({ children, ...restProps }) {
     return <Container {...restProps}>{ children }</Container>
@@ -36,13 +36,16 @@ Form.Link =  function FormLink({children, ...restProps }) {
     return <Link {...restProps}>{ children }</Link>
 }
 
-
 Form.Input =  function FormInput({ ...restProps }) {
     return <Input {...restProps} />
 }
 
+Form.TextArea = function FormTextArea({...restProps}) {
+    return <TextArea {...restProps} />
+}
+
 Form.Alert =  function FormError({ children, ...restProps }) {
-    return <Alert {...restProps}>{ children }</Alert>
+    return <Error {...restProps}>{ children }</Error>
 }
 
 Form.Submit =  function FormSubmit({ children, ...restProps }) {

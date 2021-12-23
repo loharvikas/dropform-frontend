@@ -42,7 +42,7 @@ export const Button = styled(GlobalButton)`
     }
 
     ${({ danger }) => danger === 'true' && `
-        background-color: var(--bg-danger);
+        background:transparent;
         border: var(--danger-border);
         color: red;
 

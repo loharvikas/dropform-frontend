@@ -32,7 +32,6 @@ Sidebar.TextLink =  function SidebarTestLink({ children, ...restProps }) {
     return <TextLink {...restProps}>{ children }</TextLink>
 }
 
-
 Sidebar.Button =  function SidebarButton({ children, ...restProps }) {
     return <Button {...restProps}>{ children }</Button>
 }

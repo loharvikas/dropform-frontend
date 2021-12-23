@@ -80,9 +80,10 @@ export const Break = styled.div`
 `
 
 export const GlobalButton = styled.button`
-    padding: 0.8rem;
-    font-size: 16px;
-    font-weight: 700px;
+    padding: 12px 10px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
     background-color: var(--btn-color-1);
     color: #fff;
     cursor: pointer;
@@ -92,6 +93,18 @@ export const GlobalButton = styled.button`
     &:hover {
         filter: brightness(0.9)
     }
+
+    ${({ subtype }) => subtype === 'danger' && `
+        border: var(--danger-border);
+        color: #F93154;
+        background:transparent;
+        transition:background linear 300ms;
+
+        &:hover {
+            color:#fff;
+            background:#F93154;
+        }
+    `}
 `
 
 
@@ -104,13 +117,27 @@ export const OverLay = styled.div`
     z-index: 1000;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.4);
 `
 
 export const Inner = styled.div`
-    position: relative;
-    margin: 100px auto;
+    position: absolute;
+    width: 100%;
     z-index: 1000;
+    top: 30px;
+    animation-name: slidein;
+    animation-timing-function:linear;
+    animation-duration: 200ms;
+    animation-fill-mode:backwards;
+
+    @keyframes slidein {
+        from {
+            top:-30px;
+        }
+        to {
+            top: 30px;
+        }
+    }
 `
 
 export const Close = styled.button`
@@ -146,3 +173,19 @@ export const Close = styled.button`
     transform: rotate(-45deg);
   } 
 `;
+
+
+export const Feature = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+`
+
+
+export const FeatureTitle = styled.h3`
+    font-size: 20px;
+    font-weight: 500;
+`

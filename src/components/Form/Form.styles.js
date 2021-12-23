@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color: var(--bg-secondary);
-    margin: 0 auto;
+    margin: 20px auto;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
     padding: 25px 50px;
@@ -103,8 +103,8 @@ export const Text = styled.p`
         font-weight:500;
         text-align:left;
         font-size:14px;
-        margin-bottom:0px;
-        margin-top:5px;
+        margin-bottom:10px;
+        margin-top:1px;
     `}
 `;
 
@@ -121,7 +121,7 @@ export const Label = styled.label`
 
     ${({ type }) => type==='subForm' && `
         font-size:20px;
-        margin-bottom:5px;
+        margin-bottom:1px;
     `}
 `
 
@@ -136,10 +136,6 @@ export const Input = styled.input`
     transition: border 250ms linear;
     outline: none;
     
-    &::placeholder{
-        font-weight: 100;
-    }
-
     &:last-of-type {
         margin-bottom:10px;
     }
@@ -155,10 +151,23 @@ export const Input = styled.input`
 
 `;
 
-export const Alert = styled.div`
+export const TextArea = styled.textarea`
+    width: 100%;
+    resize: none;
+    outline:none;
+    border:1px solid lightgray;
+    border-radius: 3px;
+    padding: 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+    margin-top: 5px;
+`
+
+export const Error = styled.div`
     padding: 10px;
     margin-bottom: 20px;        
     font-size: 14px;
+    
     ${({type}) =>  type==='Error' && `
         border: var(--danger-border);
         background-color: rgba(255, 131, 134, 0.4);
@@ -174,12 +183,6 @@ export const Alert = styled.div`
 
 export const Submit = styled(GlobalButton)`
     margin: 15px 0; 
-    padding: 15px 0px;
-    font-weight: 600;
-
-    /* &:hover {
-        filter: brightness(1.2)
-    } */
 
     ${({ formType }) => formType==='subForm' && `
         font-size:14px;

@@ -1,0 +1,24 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f0f3fd;
+    border: 1px solid green;
+}
+
+.body {
+    margin: auto;
+    background-color: #fff;
+}
+
+.btn {
+    color:pink
+}
+
+.header {
+    color: black
+}
+
+.content {
+    color: black;
+}
+

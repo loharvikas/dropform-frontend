@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { NavLink as ReactRouterNavLink, Link as ReactRouterLink } from "react-router-dom";
 import { GlobalButton } from "../../globalStyles";
 
 export const Container = styled.div`
@@ -53,15 +53,20 @@ export const LogoText = styled.h1`
 
 
 
-export const LinkText = styled(ReactRouterLink)`
+export const LinkText = styled(ReactRouterNavLink)`
     cursor: pointer;
-    color: ${({ active}) => active==='true' ? '#1C1C1C' : '#939393'};
+    color:#939393;
     font-weight: 500;
     text-decoration: none;
 
     &:hover {
         color: #1C1C1C;
     }
+
+    &.active {
+        color:#1C1C1C;
+    }
+
 `
 
 export const ButtonLink = styled(GlobalButton)`

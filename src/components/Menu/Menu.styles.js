@@ -22,10 +22,11 @@ export const Tab = styled.div`
     border-radius: 3px;
     cursor: pointer;
     font-weight: 500;
-    transition: background 200ms linear;
+    transition: background 300ms linear;
     color: var(--txt-secondary);
     position: relative;
     margin-right: 3px;
+    
     &:hover {
         background-color: #dae1fa ;
         color:#22438c;
@@ -42,7 +43,7 @@ export const Tab = styled.div`
         left:0;
         right:0;
         height: 2px;
-        background-color: black;
+        background-color: #22438c;
         width: 100%;
     }
     `}

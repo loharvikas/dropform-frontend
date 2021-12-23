@@ -5,3 +5,5 @@ export { default as Form } from './Form/Form';
 export { default as Menu } from './Menu/Menu';
 export { default as Table } from './Table/Table';
 export { default as SubForm } from './SubForm/SubForm';
+export { default as Modal } from './Modal/Modal';
+export { default as Alert } from './Alert/Alert';

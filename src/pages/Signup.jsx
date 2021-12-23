@@ -84,7 +84,7 @@ const Signup = () => {
                             onChange={({ target }) => setEmail(target.value)}
                         />
                         <Form.Label htmlFor='password'>
-                            Yout password
+                            Your password
                         </Form.Label>
                         <Form.Input 
                             id='password'

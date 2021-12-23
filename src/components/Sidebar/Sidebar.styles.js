@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { Link as ReactRouterLink } from 'react-router-dom';
+import { NavLink as ReactRouterNavLink } from 'react-router-dom';
 
 export const Container = styled.div`
     width: 250px;
@@ -56,27 +56,36 @@ export const Items = styled.div`
 
 export const ItemsTitle = styled.h3`
     font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
     text-align: center;
     margin-bottom: 10px;
-    border-bottom: var(--secondary-border);
     padding: 10px 0;
+    background:var(--txt-primary);
+    color: #fff;
+    border-radius: 5px;
 `;
 
 
-export const TextLink = styled(ReactRouterLink)`
+export const TextLink = styled(ReactRouterNavLink)`
     text-decoration: none;
-    color: var(${({active}) => active==='true' ? '--txt-primary' : '--txt-secondary'});
+    color: var(--txt-secondary);
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 10px;
     text-align: left;
     padding: 10px 10px;
     border-radius: 3px;
-    background-color: ${({active}) => active==='true' ? '#edecfa' : 'transparent'};
+    background-color: transparent;
 
     &:hover {
-        background-color: #edecfa;
-        color: var(--txt-primary);
+        background-color: #dae1fa ;
+        color:#22438c;
+    }
+
+    &.active {
+       background-color :#dae1fa;
+       color:var(--txt-primary);
     }
 `;
 

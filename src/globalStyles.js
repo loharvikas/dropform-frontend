@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components/macro'
 
-export const  GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
     :root {
         --bg-primary: #f0f3fd;
         --bg-secondary: #fff;
@@ -68,7 +68,7 @@ export const AppWrapper = styled.div`
     width: 100vw;
     position: relative;
     display: flex;
-    flex-direction: ${({ direction }) => direction==='column' ? 'column' : 'row'};
+    flex-direction: ${({ direction }) => direction === 'column' ? 'column' : 'row'};
     overflow: hidden;
 `
 
@@ -188,4 +188,79 @@ export const Feature = styled.div`
 export const FeatureTitle = styled.h3`
     font-size: 20px;
     font-weight: 500;
+`
+
+export const GoogleButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    background-color: var(--txt-primary);
+    color: #fff;
+    padding: 3px 50px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    span {
+        margin-left: 5px;
+    }
+
+`
+
+export const Loader = styled.div`
+    height: 3px;
+    width: 100%;
+    background: #a5a4e7;
+
+    &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #1e1d52;
+        height: 3px;
+        width: 20%;
+        animation: getWidth 1.3s linear infinite;
+    }
+
+    @keyframes getWidth {
+        0% {
+            left: 0%;
+            width:20%;
+        }
+        10% {
+            left: 10%;
+            width: 30%;
+        }
+        25% {
+            left: 25%;
+            width: 40%;
+        }
+        50% {
+            left: 50%;
+            width: 50%;
+        }
+        75% {
+            left: 75%;
+            width: 60%;
+        }
+        100% { left: 100%; }
+    }
+`
+export const LoaderWrapper = styled.div`
+    overflow: hidden;
+    position: absolute;
+    top: ${({ top }) => top ? top : '0'}; 
+    left: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    align-content: center; 
+    justify-content: flex-start;  
+    z-index: 100000;
 `

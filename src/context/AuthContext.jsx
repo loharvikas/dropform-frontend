@@ -1,8 +1,11 @@
-import { createContext, useEffect, useCallback  } from "react";
-import { useLocalStorage } from "../hooks";
+import { createContext, useEffect, useCallback } from "react";
+import { GoogleLogin } from 'react-google-login';
 
+import { useLocalStorage } from "../hooks";
 import jwt_decode from "jwt-decode";
 import axiosInstance from "../lib/axios";
+import { GoogleButton } from "../globalStyles";
+import { GoogleLogoSVG } from "../assets/icons";
 
 export const AuthContext = createContext();
 
@@ -10,17 +13,19 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useLocalStorage('user', null);
     const [authTokens, setAuthTokens] = useLocalStorage('auth_tokens', null);
 
-    const logOut = () => {
+    const logOut = useCallback(() => {
         setUser('');
         setAuthTokens('');
         localStorage.removeItem('auth_okens')
         localStorage.removeItem('user')
-    }
+    }, [setUser, setAuthTokens])
+
 
     const updateTokens = useCallback(() => {
         const refreshToken = authTokens.refresh_token;
+
         axiosInstance
-            .post('token/refresh/', {refresh: refreshToken})
+            .post('token/refresh/', { refresh: refreshToken })
             .then(res => {
                 if (res.status === 200) {
                     const newAuthTokens = {
@@ -32,41 +37,33 @@ export const AuthProvider = ({ children }) => {
                 }
             })
             .catch(err => {
-                if(err.response.status === 401) {
+                if (err.response.status === 401) {
                     logOut();
                 }
             })
-    }, [authTokens.refresh_token])
+    }, [authTokens.refresh_token, logOut, setAuthTokens])
 
 
+    const onGoogleLoginSuccess = (response) => {
+        const payload = {
+            email: response.profileObj.email,
+            full_name: response.profileObj.givenName + ' ' + response.profileObj.familyName
+        }
+        console.log({ payload })
+        axiosInstance
+            .post('google/', payload)
+            .then((res) => {
+                const data = res.data
+                setAuthTokens({ access_token: data.access, refresh_token: data.refresh })
+                setUser(data.user)
+            })
+            .catch(error => {
+                console.log(JSON.stringify(error))
+            })
+    }
 
-    const openGoogleLoginPage = useCallback(() => {
-        const googleAuthUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
-        const redirectUri = 'api/oauth/google/';
-      
-        const scope = [
-          'https://www.googleapis.com/auth/userinfo.email',
-          'https://www.googleapis.com/auth/userinfo.profile'
-        ].join(' ');
-        
-        
-        const params = {
-          response_type: 'code',
-          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-          redirect_uri: `${process.env.REACT_APP_BASE_BACKEND_URL}/${redirectUri}`,
-          prompt: 'select_account',
-          access_type: 'offline',
-          scope
-        };
-      
-        const urlParams = new URLSearchParams(params).toString();
-      
-        window.location = `${googleAuthUrl}?${urlParams}`;
-      }, []);
-
-    
     useEffect(() => {
-        if(authTokens) {
+        if (authTokens) {
             const decoded = jwt_decode(authTokens.access_token);
             const expiryDate = decoded.exp * 1000
             if (Date.now() >= expiryDate) {
@@ -75,28 +72,45 @@ export const AuthProvider = ({ children }) => {
                 axiosInstance
                     .get(`users/${user.id}/`)
                     .then(res => {
-                        console.log({res})
+                        console.log({ res })
                         setUser(res.data)
                     })
                     .catch(err => err)
             }
-        }
+        } //eslint-disable-next-line
     }, [])
 
+
+    const GoogleLoginButton = ({ buttonText }) => (
+        <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+            onSuccess={onGoogleLoginSuccess}
+            onFailure={({ details }) => console.log(details)}
+            render={renderProps => (
+                <GoogleButton {...renderProps}>
+                    <GoogleLogoSVG />
+                    <span>{buttonText}</span>
+                </GoogleButton>
+            )}
+        />
+    )
 
     const contextObject = {
         user: user,
         authTokens: authTokens,
         setUser: setUser,
         setAuthTokens: setAuthTokens,
-        logOut:logOut,
+        GoogleLogin: GoogleLoginButton,
+        logOut: logOut,
         updateTokens: updateTokens,
-        googleAuth: openGoogleLoginPage
+        onGoogleLoginSuccess: onGoogleLoginSuccess,
     }
 
     return (
         <AuthContext.Provider value={contextObject}>
-            { children }
+            {children}
         </AuthContext.Provider>
     )
 }
+
+

@@ -6,23 +6,13 @@ import UseSwitchesBasic from '../../components/Switch';
 import axiosInstance from '../../lib/axios';
 import { GlobalButton } from '../../globalStyles';
 
-const Frame = styled.div`
-    display:flex;
-    justify-content: space-between;
-`
-
-const Group = styled.div`
-    display:flex;
-    flex-direction:column;
-    margin-bottom: 40px;
-`
 
 const initialState = {
-    data:'',
-    type:''
+    data: '',
+    type: ''
 }
 
-export const SettingsContainer = ({ formId }) =>  {
+export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
     const [formName, setFormName] = useState('');
     const [description, setDescription] = useState('');
     const [active, setActive] = useState(true);
@@ -42,47 +32,50 @@ export const SettingsContainer = ({ formId }) =>  {
             })
             .catch(err => {
                 console.log(err)
-            }) 
+            })
     }, [formId])
 
     const handleSubmit = e => {
         e.preventDefault();
         setLoading(true);
         setMessage(initialState)
-        
+        setGlobalLoading(true);
+
         const payload = {
             'name': formName,
-            'description':description,
+            'description': description,
             'active': active,
             'alert': alert
         }
-        
+
         axiosInstance
             .patch(`forms/detail/${formId}/`, payload)
             .then(res => {
-                setMessage({data:'Your information is successfully updated!', type: 'Success'});
+                setMessage({ data: 'Your information is successfully updated!', type: 'Success' });
+                setGlobalLoading(false);
                 setLoading(false);
             })
             .catch(err => {
-                setMessage({data:'Invalid data', type: 'Error'})
+                setMessage({ data: 'Invalid data', type: 'Error' });
+                setGlobalLoading(false);
                 setLoading(false);
             })
     }
-    
-    
+
+
     return (
         <>
             {toggle && ReactDOM.createPortal(
-                <DeleteEndpoint formId={formId} setToggle={setToggle}/>,
-            document.body)}
+                <DeleteEndpoint formId={formId} setToggle={setToggle} />,
+                document.body)}
             <Form.Wrapper type='subForm'>
-                { loading && <Form.Loader /> }
-                { message.data && <Form.Alert type={message.type}>{ message.data }</Form.Alert>}
+                {loading && <Form.Loader />}
+                {message.data && <Form.Alert type={message.type}>{message.data}</Form.Alert>}
                 <Form.Base onSubmit={handleSubmit}>
                     <Frame>
                         <Form.Title type='subForm'>Settings</Form.Title>
-                        <GlobalButton 
-                            subtype='danger' 
+                        <GlobalButton
+                            subtype='danger'
                             type='button'
                             onClick={() => setToggle(true)}
                         >
@@ -94,7 +87,7 @@ export const SettingsContainer = ({ formId }) =>  {
                             Form Name
                         </Form.Label>
                         <Form.Text type='subForm'>This information will not be displayed publicly.</Form.Text>
-                        <Form.Input 
+                        <Form.Input
                             id='form_name'
                             type='text'
                             formType='subForm'
@@ -118,33 +111,47 @@ export const SettingsContainer = ({ formId }) =>  {
                     </Group>
                     <Group>
                         <Frame>
-                                <div>
-                                    <Form.Label htmlFor='password' type='subForm'>
-                                        Form Enabled
-                                    </Form.Label>
-                                    <Form.Text type='subForm'>
-                                                Once disabled yout will not receivie any new submission.
-                                    </Form.Text>
-                                </div>
-                        <UseSwitchesBasic handleChange={() => setActive(prevState => !prevState)} checked={active}/>
+                            <div>
+                                <Form.Label htmlFor='password' type='subForm'>
+                                    Form Enabled
+                                </Form.Label>
+                                <Form.Text type='subForm'>
+                                    Once disabled yout will not receivie any new submission.
+                                </Form.Text>
+                            </div>
+                            <UseSwitchesBasic handleChange={() => setActive(prevState => !prevState)} checked={active} />
                         </Frame>
                     </Group>
                     <Group>
                         <Frame>
                             <div>
                                 <Form.Label htmlFor='email_notification' type='subForm'>
-                                Email notification
+                                    Email notification
                                 </Form.Label>
                                 <Form.Text type='subForm'>
                                     Enable or disable sending email notifications.
                                 </Form.Text>
                             </div>
-                            <UseSwitchesBasic handleChange={() => setAlert(prevState => !prevState)} checked={alert}/>
+                            <UseSwitchesBasic handleChange={() => setAlert(prevState => !prevState)} checked={alert} />
                         </Frame>
+                    </Group>
+                    <Group>
+                        <Form.Label htmlFor='redirect' type='subForm'>
+                            Custom redirect URL
+                        </Form.Label>
+                        <Form.Text type='subForm'>After sucessful submission redirect to this URL..</Form.Text>
+                        <Form.Input
+                            id='redirect'
+                            type='text'
+                            formType='subForm'
+                            placeholder='Enter redirect url..'
+                            value={formName}
+                            onChange={({ target }) => setFormName(target.value)}
+                        />
                     </Group>
                     <Frame>
                         <div>
-                            <Form.Submit  type='submit' formType='subForm'>
+                            <Form.Submit type='submit' formType='subForm'>
                                 Save changes
                             </Form.Submit>
                         </div>
@@ -176,7 +183,7 @@ const DeleteEndpoint = ({ formId, setToggle }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div style={{fontWeight:'600', padding:'20px', fontSize:'14px', color:'var(--txt-secondary)'}}>
+                    <div style={{ fontWeight: '600', padding: '20px', fontSize: '14px', color: 'var(--txt-secondary)' }}>
                         Are you sure you want to delete this endpoint?
                     </div>
                     <Modal.Close onClick={() => setToggle(false)} />
@@ -191,7 +198,18 @@ const DeleteEndpoint = ({ formId, setToggle }) => {
                         </Modal.Button>
                     </div>
                 </Modal.Footer>
-                </Modal.Inner>
+            </Modal.Inner>
         </Modal>
     )
 }
+
+const Frame = styled.div`
+    display:flex;
+    justify-content: space-between;
+`
+
+const Group = styled.div`
+    display:flex;
+    flex-direction:column;
+    margin-bottom: 40px;
+`

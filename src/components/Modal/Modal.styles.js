@@ -18,6 +18,8 @@ export const Inner = styled.div`
     margin-top:80px;
     background: #fff;
     position:relative;
+    max-height: 600px;
+    overflow: scroll;
 `;
 
 export const Header = styled.div`
@@ -31,6 +33,8 @@ export const Title = styled.h1`
 `;
 
 export const Body = styled.div`
+  max-height: 450px;
+  overflow: scroll;
 `;
 
 export const Text = styled.p`
@@ -79,7 +83,7 @@ export const Button = styled(GlobalButton)`
     border-radius: 5px;
     font-weight: 500;
 
-    ${({type}) => type === 'secondary' && `
+    ${({ type }) => type === 'secondary' && `
         border:1px solid lightgray;
         color:black;
         background:#fff;

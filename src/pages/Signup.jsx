@@ -13,7 +13,7 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const { setUser, setAuthTokens } = useContext(AuthContext);
+    const { setUser, setAuthTokens, GoogleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -23,7 +23,7 @@ const Signup = () => {
         e.preventDefault();
         setLoading(true)
         setMessage('')
-        axiosInstance.defaults.headers['Authorization']= null;
+        axiosInstance.defaults.headers['Authorization'] = null;
         const payload = Object.freeze({
             'full_name': fullName,
             'email': email,
@@ -35,9 +35,9 @@ const Signup = () => {
             .then((res) => {
                 setLoading(false)
                 const data = res.data
-                setAuthTokens({access_token: data.access, refresh_token: data.refresh})
+                setAuthTokens({ access_token: data.access, refresh_token: data.refresh })
                 setUser(data.user)
-                axiosInstance.defaults.headers['Authorization']=
+                axiosInstance.defaults.headers['Authorization'] =
                     'Bearer ' + data.access
                 navigate(ROUTES.APP + '/' + ROUTES.DASHBOARD);
             })
@@ -46,27 +46,27 @@ const Signup = () => {
                 setMessage(error.response.data.email)
             })
     }
-    
+
     return (
         <>
             <Header main='true'>
-            <Header.Frame>
-                <Header.Group>
-                    <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>Formstack</Header.LogoText>
-                </Header.Group>
-            </Header.Frame>
+                <Header.Frame>
+                    <Header.Group>
+                        <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>Formstack</Header.LogoText>
+                    </Header.Group>
+                </Header.Frame>
             </Header>
             <Break />
             <Form>
                 <Form.Wrapper>
-                    { loading && <Form.Loader /> }
+                    {loading && <Form.Loader />}
                     <Form.Title>Create an account</Form.Title>
-                    { message && <Form.Alert type='Error'>{ message }</Form.Alert>}
+                    {message && <Form.Alert type='Error'>{message}</Form.Alert>}
                     <Form.Base onSubmit={handleSubmit}>
                         <Form.Label htmlFor='name'>
                             Your Name
                         </Form.Label>
-                        <Form.Input 
+                        <Form.Input
                             id='name'
                             type='text'
                             placeholder='Enter your name..'
@@ -76,7 +76,7 @@ const Signup = () => {
                         <Form.Label htmlFor='email'>
                             Your email address
                         </Form.Label>
-                        <Form.Input 
+                        <Form.Input
                             id='email'
                             type='email'
                             placeholder='Enter your email address...'
@@ -86,7 +86,7 @@ const Signup = () => {
                         <Form.Label htmlFor='password'>
                             Your password
                         </Form.Label>
-                        <Form.Input 
+                        <Form.Input
                             id='password'
                             type='password'
                             placeholder='Enter your password...'
@@ -97,6 +97,7 @@ const Signup = () => {
                         <Form.Submit disabled={isInValid} type='submit'>
                             Create an account
                         </Form.Submit>
+                        <GoogleLogin buttonText='Signup with Google' />
                     </Form.Base>
                     <Form.Text>
                         Already have an account ? <Form.Link to={ROUTES.SIGN_IN}>Sign in</Form.Link>

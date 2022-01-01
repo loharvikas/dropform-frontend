@@ -3,6 +3,7 @@ import { NavLink as ReactRouterNavLink } from 'react-router-dom';
 
 export const Container = styled.div`
     width: 250px;
+    height: 100vh;
     border-right: var(--primary-border);
     height: 100vh;
     overflow-y:scroll;
@@ -20,20 +21,36 @@ export const SideBarBreak = styled.div`
     height: 100vh;
 `
 
-
 export const Header = styled.header`
+    width: inherit;
     background-color: var(--bg-secondary);
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding-left: 5px;
     border-bottom:  var(--primary-border);
     height: 50px;
-    margin-bottom: 10px;
     position: sticky;
     top: 0;
     left:0;
     right: 0;
     z-index:999;
+`;
+
+export const Footer = styled.footer`
+    background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top:  var(--primary-border);
+    border-right: var(--primary-border);
+    padding:0 10px;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right: 0;
+    z-index:999;
+    width: inherit;
 `;
 
 export const Image = styled.img`
@@ -55,14 +72,10 @@ export const Items = styled.div`
 `;
 
 export const ItemsTitle = styled.h3`
-    font-weight: 500;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 10px;
-    padding: 10px 0;
-    background:var(--txt-primary);
-    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: var(--txt-primary);
     border-radius: 5px;
 `;
 
@@ -90,29 +103,9 @@ export const TextLink = styled(ReactRouterNavLink)`
 `;
 
 export const Button = styled.button`
-    width: 100%;
     border: none;
-    border-radius: 3px;
-    padding: 10px 0;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
-    background-color: #edecfa;
-    width: 90%;
-    align-items: center;
+    background-color:  transparent;
     cursor: pointer;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    
-    & svg {
-        width: 20px;
-        height:20px;
-        stroke-width: 10px;
-    }
-
-    &:hover {
-        filter: brightness(0.9);
-    }
 `;
 
 export const TextInput = styled.input`

@@ -4,9 +4,10 @@ import { GlobalButton } from "../../globalStyles";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0 20px;
-    margin-top: 70px;
+    padding: 0 20px;
+    padding-top: 70px;
     color: var(--txt-primary);
+    position:relative;
 `;
 
 export const Frame = styled.div`

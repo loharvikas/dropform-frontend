@@ -1,17 +1,19 @@
 import React, { useState, useContext } from 'react';
+
 import { AuthContext } from '../context/AuthContext';
 import { Form, Header } from '../components';
 import { Break } from '../globalStyles';
-import { LogoSVG } from '../assets/Logo';
+import { LogoSVG } from '../assets/icons';
 import axiosInstance from '../lib/axios';
 import * as ROUTES from '../constants/routes';
+
 
 const Signin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const { setUser, setAuthTokens } = useContext(AuthContext); 
+    const { setUser, setAuthTokens, GoogleLogin } = useContext(AuthContext);
 
     const isInValid = email === '' || password === '';
 
@@ -19,19 +21,19 @@ const Signin = () => {
         e.preventDefault();
         setLoading(true);
         setMessage('');
-        
+
         const payload = {
             email: email,
             password: password
         }
-        
+
         axiosInstance
             .post('login/', payload)
             .then(res => {
                 const data = res.data;
-                setAuthTokens({access_token: data.access, refresh_token: data.refresh})
+                setAuthTokens({ access_token: data.access, refresh_token: data.refresh })
                 setUser(data.user)
-                axiosInstance.defaults.headers['Authorization']=
+                axiosInstance.defaults.headers['Authorization'] =
                     'Bearer ' + data.access
                 setLoading(false);
             })
@@ -40,27 +42,30 @@ const Signin = () => {
                 setMessage('Email address or password is invalid please check!');
             })
     }
-    
+
+
+
+
     return (
         <>
             <Header main='true'>
-            <Header.Frame>
-                <Header.Group>
-                    <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>Formstack</Header.LogoText>
-                </Header.Group>
-            </Header.Frame>
+                <Header.Frame>
+                    <Header.Group>
+                        <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>Formstack</Header.LogoText>
+                    </Header.Group>
+                </Header.Frame>
             </Header>
             <Break />
             <Form>
                 <Form.Wrapper>
-                    { loading && <Form.Loader /> }
+                    {loading && <Form.Loader />}
                     <Form.Title>Welcome back!</Form.Title>
-                    { message && <Form.Alert type='Error'>{ message }</Form.Alert>}
+                    {message && <Form.Alert type='Error'>{message}</Form.Alert>}
                     <Form.Base onSubmit={handleSubmit}>
                         <Form.Label htmlFor='email'>
                             Email Address
                         </Form.Label>
-                        <Form.Input 
+                        <Form.Input
                             id='email'
                             type='email'
                             placeholder='Enter your email addess...'
@@ -70,7 +75,7 @@ const Signin = () => {
                         <Form.Label htmlFor='password'>
                             Password
                         </Form.Label>
-                        <Form.Input 
+                        <Form.Input
                             id='password'
                             type='password'
                             placeholder='Enter your password...'
@@ -82,6 +87,7 @@ const Signin = () => {
                         <Form.Submit disabled={isInValid} type='submit'>
                             Sign in
                         </Form.Submit>
+                        <GoogleLogin buttonText='Sigin in with Google' />
                     </Form.Base>
                     <Form.Text>
                         Don't have an account ? <Form.Link to={ROUTES.SIGN_UP}>Create an account</Form.Link>

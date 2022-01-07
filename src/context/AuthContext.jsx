@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
 
 
     const updateTokens = useCallback(() => {
-        const refreshToken = authTokens.refresh_token;
+        const refreshToken = authTokens?.refresh_token;
 
         axiosInstance
             .post('token/refresh/', { refresh: refreshToken })
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
                     logOut();
                 }
             })
-    }, [authTokens.refresh_token, logOut, setAuthTokens])
+    }, [authTokens?.refresh_token, logOut, setAuthTokens])
 
 
     const onGoogleLoginSuccess = (response) => {
@@ -57,9 +57,7 @@ export const AuthProvider = ({ children }) => {
                 setAuthTokens({ access_token: data.access, refresh_token: data.refresh })
                 setUser(data.user)
             })
-            .catch(error => {
-                console.log(JSON.stringify(error))
-            })
+            .catch(error => error)
     }
 
     useEffect(() => {

@@ -24,11 +24,11 @@ export const Inner = styled.div`
 
 export const Header = styled.div`
     padding: 10px 20px;
-    background-color: var(--bg-primary);
+    background-color: var(--BLUE-100);
 `;
 
 export const Title = styled.h1`
-    color:var(--txt-primary);
+    color:var(--BLUE-900);
     font-size:24px;
 `;
 
@@ -38,7 +38,7 @@ export const Body = styled.div`
 `;
 
 export const Text = styled.p`
-    color:var(--txt-secondary);
+    color:var(--GREY-500);
     font-weight: 500;
 `;
 
@@ -78,23 +78,17 @@ export const Close = styled.button`
 `;
 
 export const Button = styled(GlobalButton)`
-    margin-left: 20px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-weight: 500;
-
-    ${({ type }) => type === 'secondary' && `
-        border:1px solid lightgray;
-        color:black;
-        background:#fff;
-    `}
+  margin-right:10px;
+  
+  &:last-of-type {
+    margin-right: 0px;
+  }
 `;
 
 export const Footer = styled.div`
     height: 80px;
     padding: 20px;
-    background: rgba(0,0, 0, 0.03);
+    background: var(--GREY-200);
     display: flex;
-    /* align-self: flex-end; */
     flex-direction: row-reverse;
 `

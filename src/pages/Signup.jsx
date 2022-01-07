@@ -1,11 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../context/AuthContext';
+import axiosInstance from '../lib/axios';
+
 import { Form, Header } from '../components';
 import { Break } from '../globalStyles';
 import { LogoSVG } from '../assets/Logo';
+
 import * as ROUTES from '../constants/routes';
-import axiosInstance from '../lib/axios';
-import { AuthContext } from '../context/AuthContext';
+import * as STYLES from '../constants/styles';
 
 const Signup = () => {
     const [fullName, setFullName] = useState('');
@@ -52,7 +56,7 @@ const Signup = () => {
             <Header main='true'>
                 <Header.Frame>
                     <Header.Group>
-                        <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>Formstack</Header.LogoText>
+                        <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>DropForm</Header.LogoText>
                     </Header.Group>
                 </Header.Frame>
             </Header>
@@ -94,7 +98,11 @@ const Signup = () => {
                             autoComplete='off'
                             onChange={({ target }) => setPassword(target.value)}
                         />
-                        <Form.Submit disabled={isInValid} type='submit'>
+                        <Form.Submit
+                            disabled={isInValid}
+                            type='submit'
+                            subType={STYLES.BUTTON_PRIMARY}
+                        >
                             Create an account
                         </Form.Submit>
                         <GoogleLogin buttonText='Signup with Google' />

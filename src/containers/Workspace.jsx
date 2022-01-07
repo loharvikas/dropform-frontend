@@ -7,6 +7,7 @@ import { FormSVG, CreateFormSVG } from '../assets/icons';
 import { Workspace } from '../components';
 import { getDatetime } from '../utils/helper';
 import * as ROUTES from '../constants/routes';
+import * as STYLES from '../constants/styles';
 import axiosInstance from '../lib/axios';
 import { Feature, FeatureTitle, LoaderWrapper, Loader } from '../globalStyles';
 
@@ -41,7 +42,7 @@ const WorkspaceContainer = ({ workspaceList, setWorkspaceList }) => {
 
 
     useEffect(() => {
-        document.title = 'Dashboard -Formstack'
+        document.title = 'Dashboard -Dropform'
     }, [])
 
 
@@ -78,8 +79,12 @@ const WorkspaceContainer = ({ workspaceList, setWorkspaceList }) => {
                         </Workspace.Title>
                     </Workspace.Group>
                     <Workspace.Group>
-                        <Workspace.Button onClick={() => setToggle(true)} danger='true'>Delete this workspace</Workspace.Button>
-                        <Workspace.Button onClick={() => setShowForm(true)}>New Form</Workspace.Button>
+                        <Workspace.Button
+                            onClick={() => setToggle(true)}
+                            subType={STYLES.BUTTON_SECONDARY}
+                        >Delete this workspace
+                        </Workspace.Button>
+                        <Workspace.Button onClick={() => setShowForm(true)}>Add new form</Workspace.Button>
                     </Workspace.Group>
                 </Workspace.Frame>
                 {forms.length > 0 ?
@@ -138,7 +143,7 @@ const DeleteWorkspace = ({ workspace, setToggle, setWorkspaceList }) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                        <Modal.Button type='secondary' onClick={() => setToggle(false)}>
+                        <Modal.Button onClick={() => setToggle(false)} subType={STYLES.BUTTON_SECONDARY}>
                             Cancel
                         </Modal.Button>
                         <Modal.Button onClick={handleSubmit}>
@@ -225,10 +230,16 @@ const CreateFormContainer = ({ setShowForm, forms, setForms, workspace }) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                        <Modal.Button type='secondary' onClick={() => setShowForm(false)}>
+                        <Modal.Button
+                            onClick={() => setShowForm(false)}
+                            subType={STYLES.BUTTON_SECONDARY}
+                        >
                             Cancel
                         </Modal.Button>
-                        <Modal.Button onClick={handleSubmit}>
+                        <Modal.Button
+                            onClick={handleSubmit}
+                            subType={STYLES.BUTTON_PRIMARY}
+                        >
                             Submit
                         </Modal.Button>
                     </div>

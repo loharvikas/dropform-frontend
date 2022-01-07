@@ -11,6 +11,8 @@ import { GlobalButton, Feature, FeatureTitle } from '../../globalStyles';
 import axiosInstance from '../../lib/axios';
 import { Modal } from '../../components';
 
+import * as STYLES from '../../constants/styles';
+
 function CustomToolbar() {
     return (
         <GridToolbarContainer className={gridClasses.toolbarContainer}>
@@ -86,15 +88,15 @@ const GridContainter = ({ setLoading, rows, columns, fetchData, count }) => {
                 >
                     Delete
                 </GlobalButton>
-                <div style={{ height: '100%', padding: "0 20px" }} >
+                <div style={{ height: '100%', padding: "0 20px", overflowX: 'scroll' }} >
 
                     <DataGrid
                         rowHeight={40}
                         rows={rows}
                         columns={newColumns}
-                        rowsPerPageOptions={[5]}
+                        rowsPerPageOptions={[50]}
                         pagination
-                        pageSize={3}
+                        pageSize={50}
                         rowCount={count}
                         paginationMode="server"
                         onPageChange={handlePageChange}
@@ -150,7 +152,7 @@ const InfoContainer = ({ value, setToggle }) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                        <Modal.Button type='secondary' onClick={() => setToggle(false)}>
+                        <Modal.Button subType={STYLES.BUTTON_SECONDARY} onClick={() => setToggle(false)}>
                             Done
                         </Modal.Button>
                     </div>

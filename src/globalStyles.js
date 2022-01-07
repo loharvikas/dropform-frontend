@@ -1,23 +1,104 @@
-import styled, { createGlobalStyle } from 'styled-components/macro'
+import styled, { createGlobalStyle } from 'styled-components/macro';
+import * as STYLES from './constants/styles';
 
 export const GlobalStyles = createGlobalStyle`
     :root {
-        --bg-primary: #f0f3fd;
-        --bg-secondary: #fff;
-        --bg-dashboard: #edecfa;
-        --bg-danger: #F9F9F9;
-        --bg-type: lightgray;
-        --txt-primary: #0e1952;
-        --txt-secondary: #939393;
-        --link-color: #4B4ACF;
-        --btn-color-1: #4B4ACF;
-        --btn-color-2: #1e1e24;
-        --btn-color-3: #A6BFF3
-        --box-shadow:0px 0px 3px 1px rgba(0,0,0,0.1);
-        --primary-border: 1px solid lightgray;
-        --secondary-border: 1px solid #4B4ACF;
-        --danger-border: 1px solid  #F93154;
-        --success-border: 1px solid #00B74A;
+        --FONT-SIZES-D1: 48px;
+        --FONT-SIZES-D2: 40px;
+        --FONT-SIZES-H1: 32px;
+        --FONT-SIZES-H2: 24px;
+        --FONT-SIZES-H3: 20px;
+        --FONT-SIZES-C1: 16px;
+        --FONT-SIZES-C2: 14px;
+        --FONT-SIZES-C3: 12px;
+        --FONT-SIZES-C4: 10px;
+        --BLACK-100: rgba(0, 0, 0, .1);
+        --BLACK-200: rgba(0, 0, 0, .2);
+        --BLACK-300: rgba(0, 0, 0, .3);
+        --BLACK-400: rgba(0, 0, 0, .4);
+        --BLACK-500: rgba(0, 0, 0, .5);
+        --BLACK-600: rgba(0, 0, 0, .6);
+        --BLACK-700: rgba(0, 0, 0, .7);
+        --BLACK-800: rgba(0, 0, 0, .8);
+        --BLACK-999: rgba(0, 0, 0, 1);
+        --WHITE-100: rgba(255, 255, 255, .1);
+        --WHITE-200: rgba(255, 255, 255, .2);
+        --WHITE-300: rgba(255, 255, 255, .3);
+        --WHITE-400: rgba(255, 255, 255, .4);
+        --WHITE-500: rgba(255, 255, 255, .5);
+        --WHITE-600: rgba(255, 255, 255, .6);
+        --WHITE-700: rgba(255, 255, 255, .7);
+        --WHITE-800: rgba(255, 255, 255, .8);
+        --WHITE-999: rgba(255, 255, 255, 1);
+        --GREY-100: #F7F5F9;
+        --GREY-200: #E2E2E8;
+        --GREY-300: #CCCCD4;
+        --GREY-400: #ABABB4;
+        --GREY-500: #86868E;
+        --GREY-600: #696972;
+        --GREY-700: #4B4B55;
+        --GREY-800: #34343D;
+        --GREY-900: #29292E;
+        --PRIMARY-500: rgba(99, 91, 255);
+        --PRIMARY-600: #413ea9;
+        --PRIMARY-700: #373385;
+        --PRIMARY-800: #2d2762;
+        --PRIMARY-900: #211d42;
+        --PURPLE-100: #F2EEF6;
+        --PURPLE-200: #E2D4EF;
+        --PURPLE-300: #B59BD8;
+        --PURPLE-400: #7855A5;
+        --PURPLE-500: #5A2E91;
+        --PURPLE-600: #401773;
+        --PURPLE-700: #20054C;
+        --PURPLE-800: #14012E;
+        --PURPLE-900: #100024;
+        --RED-100: #F7E2DF;
+        --RED-200: #FCC9C2;
+        --RED-300: #FF9781;
+        --RED-400: #F46D4F;
+        --RED-500: #E3350F;
+        --RED-600: #AA280B;
+        --RED-700: #7C1D0E;
+        --RED-800: #4F0F04;
+        --RED-900: #350B02;
+        --YELLOW-100: #FFF8F2;
+        --YELLOW-200: #FEF0D9;
+        --YELLOW-300: #FDD9A1;
+        --YELLOW-400: #FCC062;
+        --YELLOW-500: #FFA800;
+        --YELLOW-600: #FC871B;
+        --YELLOW-700: #C36003;
+        --YELLOW-800: #703600;
+        --YELLOW-900: #492903;
+        --TEAL-100: #E0FFF4;
+        --TEAL-200: #BAF9E2;
+        --TEAL-300: #88F9C9;
+        --TEAL-400: #53E0AD;
+        --TEAL-500: #00D387;
+        --TEAL-600: #009E65;
+        --TEAL-700: #006A44;
+        --TEAL-800: #05492F;
+        --TEAL-900: #1A352B;
+        --BLUE-100: #F0F3FD;
+        --BLUE-200: #D6E2FA;
+        --BLUE-300: #A5BFF3;
+        --BLUE-400: #6691EE;
+        --BLUE-500: #396FE9;
+        --BLUE-600: #2B55B1;
+        --BLUE-700: #22438C;
+        --BLUE-800: #172C5D;
+        --BLUE-900: #021641;
+        --SHADOWS-FOCUS: 0 0 0 3px var(--BLUE-200);
+        --SHADOW-PRIMARY: 0px 0px 3px 1px rgba(0,0,0,0.1);
+        --SHADOWS-DEPTH-01: 0px 0.5px 1px 0.5px rgba(0, 0, 0, 0.08);
+        --SHADOWS-DEPTH-02: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+        --TRANSITIONS-CUBIC-BEZIER: cubic-bezier(.25, .8, .25, 1);
+        --TRANSITIONS-DEFAULT: 300ms cubic-bezier(.25, .8, .25, 1);
+        --BORDER-PRIMARY: 1px solid var(--BLUE-900);
+        --BORDER-SECONDARY: 1px solid lightgray;
+        --BORDER-DANGER: 1px solid var(--RED-500);
+        --BORDER-SUCCESS: 1px solid var(--TEAL-600);
     }
     
     *, *:before, *:after {
@@ -33,7 +114,7 @@ export const GlobalStyles = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         font-size: 16px;
         position: relative;
-        background-color: var(--bg-primary);
+        background-color: var(--BLUE-100);
         overflow-x: hidden;
     }
 
@@ -57,14 +138,14 @@ export const GlobalStyles = createGlobalStyle`
 `
 
 
-export const GlobalWrapper = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 0 10px;
 `
 
-export const AppWrapper = styled.div`
+export const InnerWrapper = styled.div`
     width: 100vw;
     position: relative;
     display: flex;
@@ -80,99 +161,49 @@ export const Break = styled.div`
 `
 
 export const GlobalButton = styled.button`
-    padding: 12px 10px;
-    height: 40px;
-    font-size: 14px;
-    font-weight: 600;
-    background-color: var(--btn-color-1);
+    background-color: var(--PRIMARY-500);
     color: #fff;
-    cursor: pointer;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 550;
     border-radius: 3px;
     border: none;
+    cursor: pointer;
 
     &:hover {
         filter: brightness(0.9)
     }
 
-    ${({ subtype }) => subtype === 'danger' && `
-        border: var(--danger-border);
+    ${({ subType }) => subType === STYLES.BUTTON_DANGER && `
+        border: var(--BORDER-DANGER);
         color: #F93154;
-        background:transparent;
+        background: transparent;
         transition:background linear 300ms;
 
+        // &:hover {
+        //     color:#fff;
+        //     background:#F93154;
+        // }
+    `}
+
+    ${({ subType }) => subType === STYLES.BUTTON_LINK && `
+        background: transparent;
+        color: var(--PRIMARY-500);
+        
         &:hover {
-            color:#fff;
-            background:#F93154;
+            box-shadow: none;
         }
     `}
+
+    ${({ subType }) => subType === STYLES.BUTTON_SECONDARY && `
+        background-color: var(--WHITE-999);
+        border: var(--BORDER-SECONDARY);
+        color: var(--GREY-900);
+
+        box-shadow:rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(64 68 82 / 16%) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(64 68 82 / 8%) 0px 2px 5px 0px;
+    `}
 `
-
-
-export const OverLay = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-`
-
-export const Inner = styled.div`
-    position: absolute;
-    width: 100%;
-    z-index: 1000;
-    top: 30px;
-    animation-name: slidein;
-    animation-timing-function:linear;
-    animation-duration: 200ms;
-    animation-fill-mode:backwards;
-
-    @keyframes slidein {
-        from {
-            top:-30px;
-        }
-        to {
-            top: 30px;
-        }
-    }
-`
-
-export const Close = styled.button`
-  position: absolute;
-  top:10px;
-  right: 10px;
-  width: 22px;
-  height: 22px;
-  opacity: 0.5;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  &:before,
-  &:after {
-    position: absolute;
-    left: 10px;
-    top: 0;
-    content: ' ';
-    height: 22px;
-    width: 2px;
-    background-color: #333;
-  }
-
-  &:before {
-    transform: rotate(45deg);
-  }
-  &:after {
-    transform: rotate(-45deg);
-  } 
-`;
 
 
 export const Feature = styled.div`
@@ -196,13 +227,13 @@ export const GoogleButton = styled.button`
     justify-content: center;
     width: 100%;
     border: none;
-    background-color: var(--txt-primary);
-    color: #fff;
-    padding: 3px 50px;
+    background-color: var(--BLUE-900);
+    color: var(--WHITE-999);
+    padding: 10px 0;
     border-radius: 5px;
     font-weight: 600;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     span {
         margin-left: 5px;

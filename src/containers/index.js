@@ -4,3 +4,4 @@ export { default as MembersContainer } from './Members';
 export { default as WorkspaceContainer } from './Workspace';
 export { default as FormContainer } from './Core/Core';
 export { default as AccountContainer } from './Account';
+export { default as BillingContainer } from './Billing';

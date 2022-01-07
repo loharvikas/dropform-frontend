@@ -1,0 +1,65 @@
+{
+    "pricingInfo": [
+        {
+            "id": 1,
+            "type": "Testing",
+            "price": "0",
+            "description": "For testing purpose",
+            "features": [
+                "20 Forms",
+                "5 Workspaces",
+                "50 Monthly Submissions",
+                "100 Mb Storage",
+                "5 mb max. File Size"
+            ]
+        },
+        {
+            "id": 2,
+            "type": "Standard",
+            "price": "700",
+            "description": "For personal use",
+            "features": [
+                "5 Forms",
+                "3 Workspaces",
+                "1000 Monthly Submissions",
+                "1 Gb Storage",
+                "5 mb max. File Size",
+                "Custom redirect",
+                "API",
+                "Export CSV"
+            ]
+        },
+        {
+            "id": 3,
+            "type": "Professional",
+            "price": "2,600",
+            "description": "For startups and freelancers.",
+            "features": [
+                "20 Forms",
+                "10 Workspaces",
+                "10,000 Monthly Submissions",
+                "3 Gb Storage",
+                "20 mb max. File Size",
+                "Custom redirect",
+                "API",
+                "Export CSV"
+            ]
+        },
+        {
+            "id": 4,
+            "type": "Business",
+            "price": "5,900",
+            "description": "For agencies and organization",
+            "features": [
+                "Unlimited Forms",
+                "100 Workspaces",
+                "100,000 Monthly Submissions",
+                "10 Gb Storage",
+                "25 mb max. File Size",
+                "Custom redirect",
+                "API",
+                "Export CSV"
+            ]
+        }
+    ]
+}

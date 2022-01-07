@@ -4,7 +4,7 @@ import { NavLink as ReactRouterNavLink } from 'react-router-dom';
 export const Container = styled.div`
     width: 250px;
     height: 100vh;
-    border-right: var(--primary-border);
+    border-right: var(--BORDER-SECONDARY);
     height: 100vh;
     overflow-y:scroll;
     overflow-x: hidden;
@@ -23,11 +23,11 @@ export const SideBarBreak = styled.div`
 
 export const Header = styled.header`
     width: inherit;
-    background-color: var(--bg-secondary);
+    background-color: var(--WHITE-999);
     display: flex;
     align-items: center;
     padding-left: 5px;
-    border-bottom:  var(--primary-border);
+    border-bottom:  var(--BORDER-SECONDARY);
     height: 50px;
     position: sticky;
     top: 0;
@@ -37,12 +37,12 @@ export const Header = styled.header`
 `;
 
 export const Footer = styled.footer`
-    background-color: var(--bg-secondary);
+    background-color: var(--WHITE-999);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-top:  var(--primary-border);
-    border-right: var(--primary-border);
+    border-top:  var(--BORDER-SECONDARY);
+    border-right: var(--BORDER-SECONDARY);
     padding:0 10px;
     height: 50px;
     position: fixed;
@@ -62,7 +62,7 @@ export const Title = styled.h1`
     font-size: 16px;
     font-weight: bold;
     margin-left: 5px;
-    color: var(--txt-primary);
+    color: var(--BLUE-900);
 `;
 
 export const Items = styled.div`
@@ -75,14 +75,14 @@ export const ItemsTitle = styled.h3`
     font-weight: 600;
     font-size: 20px;
     text-transform: capitalize;
-    color: var(--txt-primary);
+    color: var(--BLUE-900);
     border-radius: 5px;
 `;
 
 
 export const TextLink = styled(ReactRouterNavLink)`
     text-decoration: none;
-    color: var(--txt-secondary);
+    color: var(--GREY-500);
     cursor: pointer;
     font-weight: 500;
     margin-bottom: 10px;
@@ -92,13 +92,13 @@ export const TextLink = styled(ReactRouterNavLink)`
     background-color: transparent;
 
     &:hover {
-        background-color: #dae1fa ;
-        color:#22438c;
+        background-color: var(--BLUE-200);
+        color:var(--BLUE-900);
     }
 
     &.active {
-       background-color :#dae1fa;
-       color:var(--txt-primary);
+       background-color: var(--BLUE-200);
+       color:var(--BLUE-900);
     }
 `;
 
@@ -108,16 +108,3 @@ export const Button = styled.button`
     cursor: pointer;
 `;
 
-export const TextInput = styled.input`
-    width: 100%;
-    font-size: 16px;
-    outline: none;
-    border: 1px solid lightgray;
-    border-radius: 3px;
-    padding: 5px 10px;
-    width: 90%;
-    margin: 10px auto;
-    &::placeholder {
-        color: lightgray;
-    }
-`

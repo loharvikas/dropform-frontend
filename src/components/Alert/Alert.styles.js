@@ -4,7 +4,7 @@ import { GlobalButton } from '../../globalStyles';
 export const Container = styled.div`
     display:flex;
     flex-direction: column;
-    background-color:#00b37e; 
+    background-color: var(--TEAL-500); 
     justify-content: center;
     align-items: center;
     padding: 10px 0;
@@ -41,6 +41,7 @@ export const Text = styled.div`
 
 export const Button = styled(GlobalButton)`
     font-size: 13px;
-    background-color: #fff;
-    color:black;
+    background-color: var(--WHITE-999);
+    color: var(--BLACK-999);
+    border: 2px solid var(--BLACK-999);
 `;

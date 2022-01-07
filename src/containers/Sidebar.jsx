@@ -7,6 +7,7 @@ import { PlusSVG, LogoSVG } from '../assets/icons'
 import { AuthContext } from '../context/AuthContext';
 import axiosInstance from '../lib/axios';
 import * as ROUTES from '../constants/routes';
+import * as STYLES from '../constants/styles';
 
 
 const Frame = styled.div`
@@ -26,17 +27,17 @@ const SidebarContainer = ({ workspaceList, setWorkspaceList }) => {
         axiosInstance
             .get(`workspace/${user.id}`)
             .then(res => {
-                if (res.status === 200) {
+                if (res?.status === 200) {
                     setWorkspaceList(res.data);
                 }
             })
             .catch(error => {
-                if (error.response.status === 401) {
+                if (error?.response?.status === 401) {
                     updateTokens();
                 }
             });
 
-    }, [user.id, setWorkspaceList, updateTokens]);
+    }, [user?.id, setWorkspaceList, updateTokens]);
 
 
 
@@ -67,7 +68,7 @@ const SidebarContainer = ({ workspaceList, setWorkspaceList }) => {
 
             <Sidebar.Footer>
                 <LogoSVG />
-                <Sidebar.Title>Formstack</Sidebar.Title>
+                <Sidebar.Title>DropForm</Sidebar.Title>
             </Sidebar.Footer>
 
             {showForm &&
@@ -155,7 +156,7 @@ const CreateWorkspace = ({ workspaceList, setWorkspaceList, user, setShowForm })
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                        <Modal.Button type='secondary' onClick={() => setShowForm(false)}>
+                        <Modal.Button subType={STYLES.BUTTON_SECONDARY} onClick={() => setShowForm(false)}>
                             Cancel
                         </Modal.Button>
                         <Modal.Button onClick={handleSubmit}>

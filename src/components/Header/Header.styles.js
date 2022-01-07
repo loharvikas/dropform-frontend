@@ -6,10 +6,10 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    border-bottom: var(--primary-border);
-    background-color: var(--bg-secondary);
+    border-bottom: var(--BORDER-SECONDARY);
+    background-color: var(--WHITE-999);
     position: sticky;
-    height: ${({ main }) => main==='true' ? '70px' : '50px'};
+    height: ${({ main }) => main === 'true' ? '70px' : '50px'};
     top: 0;
     right: 0;
     z-index: 999;
@@ -70,19 +70,4 @@ export const LinkText = styled(ReactRouterNavLink)`
 `
 
 export const ButtonLink = styled(GlobalButton)`
-    
-    &:hover {
-        box-shadow: var(--box-shadow);
-    }
-
-    ${({ primary })  => primary === 'false' &&
-        `
-            background: transparent;
-            color: var(--link-color);
-        }
-        &:hover {
-            box-shadow: none;
-        }
-        `
-    }
 `

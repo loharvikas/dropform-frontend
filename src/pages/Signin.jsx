@@ -6,6 +6,8 @@ import { Break } from '../globalStyles';
 import { LogoSVG } from '../assets/icons';
 import axiosInstance from '../lib/axios';
 import * as ROUTES from '../constants/routes';
+import * as STYLES from '../constants/styles';
+
 
 
 const Signin = () => {
@@ -51,7 +53,7 @@ const Signin = () => {
             <Header main='true'>
                 <Header.Frame>
                     <Header.Group>
-                        <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>Formstack</Header.LogoText>
+                        <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>DropForm</Header.LogoText>
                     </Header.Group>
                 </Header.Frame>
             </Header>
@@ -84,7 +86,12 @@ const Signin = () => {
                             onChange={({ target }) => setPassword(target.value)}
                         />
                         <Form.Link to={ROUTES.SIGN_UP}>Forget password ?</Form.Link>
-                        <Form.Submit disabled={isInValid} type='submit'>
+
+                        <Form.Submit
+                            disabled={isInValid}
+                            type='submit'
+                            subType={STYLES.BUTTON_PRIMARY}
+                        >
                             Sign in
                         </Form.Submit>
                         <GoogleLogin buttonText='Sigin in with Google' />

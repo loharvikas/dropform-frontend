@@ -14,12 +14,33 @@ export const Wrapper = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-secondary);
+    background-color: var(--WHITE-999);
     margin: 20px auto;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
     padding: 25px 50px;
-    width: ${({ type }) => type==='subForm' ? '900px': '500px'};
+    width: ${({ type }) => type === 'subForm' ? '900px' : '35%'};
+
+    @media screen and (max-width: 1100px) {
+        width: 60%;
+        /* margin: 10px auto; */
+    }
+
+    @media screen and (max-width: 1000px) {
+        width: 70%;
+        /* margin: 10px auto; */
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 95%;
+        margin: 5px auto;
+        padding: 20px 10px;
+    }
 `
 
 export const LoaderWrapper = styled.div`
@@ -83,7 +104,7 @@ export const Base = styled.form`
 `;
 
 export const Title = styled.h1`
-    color:var(--txt-primary);
+    color:var(--BLUE-900);
     margin-bottom: 30px;
     text-align: center;
     font-size: 24px;
@@ -95,11 +116,12 @@ export const Title = styled.h1`
 `;
 
 export const Text = styled.p`
-    color: var(--txt-secondary);
+    color: var(--GREY-500);
+    font-weight: 500;
     text-align: center;
     margin-bottom: 5px;
 
-    ${({ type }) => type==='subForm' && `
+    ${({ type }) => type === 'subForm' && `
         font-weight:500;
         text-align:left;
         font-size:14px;
@@ -109,17 +131,17 @@ export const Text = styled.p`
 `;
 
 export const Link = styled(ReactRouterLink)`
-    color: var(--link-color);
+    color: var(--PRIMARY-500);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
 `;
 
 export const Label = styled.label`
-    color:var(--txt-primary);
+    color:var(--BLUE-900);
     font-weight: 500;
     margin-bottom:10px;
 
-    ${({ type }) => type==='subForm' && `
+    ${({ type }) => type === 'subForm' && `
         font-size:20px;
         margin-bottom:1px;
     `}
@@ -130,8 +152,8 @@ export const Input = styled.input`
     padding: 0.7rem 10px;
     margin-bottom: 20px;
     font-size: 16px;
-    color: var(--txt-primary);
-    border: var(--primary-border);
+    color: var(--BLUE-900);
+    border: var(--BORDER-SECONDARY);
     border-radius: 3px;
     transition: border 250ms linear;
     outline: none;
@@ -141,10 +163,10 @@ export const Input = styled.input`
     }
 
     &:focus {
-        border: var(--secondary-border);
+        border: var(--BORDER-PRIMARY);
     }
 
-    ${({ formType }) => formType==='subForm' && `
+    ${({ formType }) => formType === 'subForm' && `
         margin-top:10px;
         margin-bottom:0px;
     `}
@@ -167,34 +189,21 @@ export const Error = styled.div`
     padding: 10px;
     margin-bottom: 20px;        
     font-size: 14px;
+    font-weight: 500;
     
-    ${({type}) =>  type==='Error' && `
-        border: var(--danger-border);
-        background-color: rgba(255, 131, 134, 0.4);
-        color: var(--txt-primary);
+    ${({ type }) => type === 'Error' && `
+        border: var(--BORDER-DANGER);
+        background-color: var(--RED-200);
+        color: var(--RED-500);
     `}
 
-    ${({type}) =>  type==='Success' && `
-        border: var(--success-border);
-        background-color: rgba(4, 185, 83 , 0.1);
-        color: var(--txt-primary);
+    ${({ type }) => type === 'Success' && `
+        border: var(--BORDER-SUCCESS);
+        background-color: var(--TEAL-100);
+        color: var(--TEAL-600);
     `}
 `;
 
 export const Submit = styled(GlobalButton)`
-    margin: 15px 0; 
-
-    ${({ formType }) => formType==='subForm' && `
-        font-size:14px;
-
-        padding: 8px 20px;
-        margin-top:0;
-        margin-right:10px;
-    `}
-
-    ${({ subType }) => subType==='secondary' && `
-        background-color:#fff;
-        border:1px solid lightgray;
-        color:black;
-    `}
+    margin: 20px 0; 
 `;

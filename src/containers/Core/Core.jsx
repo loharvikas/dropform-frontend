@@ -52,7 +52,7 @@ const FormContainer = () => {
         const hName = item === 'created_date' ? 'Submitted on' : item
         columns.push({
           field: item, headerName: hName, headerAlign: 'left',
-          headerClassName: 'table-header', flex: 1
+          headerClassName: 'table-header', flex: 1, minWidth: 150,
         })
       })
 
@@ -134,7 +134,7 @@ const FormContainer = () => {
 
       {menu === 'Settings' &&
 
-        <SettingsContainer />
+        <SettingsContainer setLoading={setLoading} formId={formId} />
       }
     </>
   )

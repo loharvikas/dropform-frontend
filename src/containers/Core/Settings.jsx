@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { Form, Modal } from '../../components';
 import styled from 'styled-components';
 import UseSwitchesBasic from '../../components/Switch';
 import axiosInstance from '../../lib/axios';
 import { GlobalButton } from '../../globalStyles';
+import { AuthContext } from '../../context/AuthContext';
+
+import * as STYLES from '../../constants/styles';
 
 
 const initialState = {
@@ -16,30 +19,32 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
     const [formName, setFormName] = useState('');
     const [description, setDescription] = useState('');
     const [active, setActive] = useState(true);
-    const [alert, setAlert] = useState(false);
+    const [alert, setAlert] = useState(true);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(initialState);
     const [toggle, setToggle] = useState(false);
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
+        setGlobalLoading(true);
         axiosInstance
             .get(`forms/detail/${formId}/`)
             .then(res => {
                 setFormName(res.data.name);
                 setDescription(res.data.description)
                 setActive(res.data.active);
-                setAlert(res.data.alert)
+                setAlert(res.data.alert);
+                setGlobalLoading(false);
             })
             .catch(err => {
-                console.log(err)
+                setGlobalLoading(false);
             })
     }, [formId])
 
     const handleSubmit = e => {
         e.preventDefault();
         setLoading(true);
-        setMessage(initialState)
-        setGlobalLoading(true);
+        setMessage(initialState);
 
         const payload = {
             'name': formName,
@@ -52,12 +57,10 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
             .patch(`forms/detail/${formId}/`, payload)
             .then(res => {
                 setMessage({ data: 'Your information is successfully updated!', type: 'Success' });
-                setGlobalLoading(false);
                 setLoading(false);
             })
             .catch(err => {
                 setMessage({ data: 'Invalid data', type: 'Error' });
-                setGlobalLoading(false);
                 setLoading(false);
             })
     }
@@ -75,7 +78,7 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
                     <Frame>
                         <Form.Title type='subForm'>Settings</Form.Title>
                         <GlobalButton
-                            subtype='danger'
+                            subType={STYLES.BUTTON_DANGER}
                             type='button'
                             onClick={() => setToggle(true)}
                         >
@@ -129,7 +132,7 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
                                     Email notification
                                 </Form.Label>
                                 <Form.Text type='subForm'>
-                                    Enable or disable sending email notifications.
+                                    Enable or disable sending email notifications (<b style={{ color: 'black' }}>{user?.email}</b>).
                                 </Form.Text>
                             </div>
                             <UseSwitchesBasic handleChange={() => setAlert(prevState => !prevState)} checked={alert} />
@@ -151,7 +154,7 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
                     </Group>
                     <Frame>
                         <div>
-                            <Form.Submit type='submit' formType='subForm'>
+                            <Form.Submit type='submit'>
                                 Save changes
                             </Form.Submit>
                         </div>
@@ -183,17 +186,24 @@ const DeleteEndpoint = ({ formId, setToggle }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div style={{ fontWeight: '600', padding: '20px', fontSize: '14px', color: 'var(--txt-secondary)' }}>
+                    <div style={{ fontWeight: '600', padding: '20px', fontSize: '14px', color: 'var(--GREY-500)' }}>
                         Are you sure you want to delete this endpoint?
                     </div>
                     <Modal.Close onClick={() => setToggle(false)} />
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
-                        <Modal.Button type='secondary' onClick={() => setToggle(false)}>
+                        <Modal.Button
+                            type='secondary'
+                            subType={STYLES.BUTTON_SECONDARY}
+                            onClick={() => setToggle(false)}
+                        >
                             Cancel
                         </Modal.Button>
-                        <Modal.Button onClick={handleSubmit}>
+                        <Modal.Button
+                            onClick={handleSubmit}
+                            subType={STYLES.BUTTON_PRIMARY}
+                        >
                             Delete
                         </Modal.Button>
                     </div>

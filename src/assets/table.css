@@ -1,10 +1,11 @@
 .table-header {
     font-weight: 700;
-    color:#fff;
+    color:var(--WHITE-999);
 }
+
 .MuiDataGrid-columnHeadersInner {
-    background-color: var(--txt-primary);
-    color:var(--txt-primary);
+    background-color: var(--BLUE-900);
+    color:var(--WHITE-999);
 }
 
 .MuiDataGrid-columnHeadersInner svg {

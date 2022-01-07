@@ -6,8 +6,8 @@ export const Container = styled.div`
     flex-direction: column;
     padding: 0 20px;
     padding-top: 70px;
-    color: var(--txt-primary);
-    position:relative;
+    color: var(--BLUE-900);
+    position: relative;
 `;
 
 export const Frame = styled.div`
@@ -24,49 +24,25 @@ export const Group = styled.div`
 export const Title = styled.h1``;
 
 export const Button = styled(GlobalButton)`
-    margin-left: 10px;
-    padding: 8px 10px;
-
-    background-color:var(--btn-color-2);
-    border: 1px solid var(--btn-color-2);
-    :last-of-type {
+    margin-right: 10px;
+    padding: 5px 10px;
+    height: 30px;
+    &:last-of-type {
         margin-right: 0;
-    }
-    color: #fff;
-    transition: background 300ms linear;
-
-    &:hover{
-        background-color: var(--bg-primary);
-        color: var(--btn-color-2);
-        border: 1px solid var(--btn-color-2);
-        filter: none;
-    }
-
-    ${({ danger }) => danger === 'true' && `
-        background:transparent;
-        border: var(--danger-border);
-        color: red;
-
-        &:hover {
-            background-color: red;
-            color: #fff;
-            border: var(--danger-border);
-        }
-    `
     }
 `;
 
 export const Items = styled.div`
     width: 100%;
     background-color: white;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--SHADOW-PRIMARY);
     margin-top: 20px;
     border-radius: 0 0 5px 5px;
     padding: 10px;
     max-height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    border: 3px solid var(--txt-primary);
+    border: 3px solid var(--BLUE-900);
 `;
 
 export const Item = styled.div`
@@ -79,14 +55,14 @@ export const Item = styled.div`
     transition: background 200ms linear;
     border-radius: 5px;
     margin-bottom: 10px;
-    color:var(--txt-primary);
+    color:var(--BLUE-900);
 
     &:hover {
-        background-color:#F7F5F9;
+        background-color:var(--BLUE-100);
         filter: hue-rotate(45deg)
     }
 
-    &::last-of-type {
+    &:last-of-type {
         margin-bottom: 0;
     }
 `;
@@ -95,4 +71,6 @@ export const ItemTitle = styled.h3`
     margin-left: 5px;
 `;
 
-export const ItemDate = styled.div``;
+export const ItemDate = styled.div`
+    font-weight: bold;
+`;

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000/api/";
+const BASE_URL = "http://api.dropform.co/api/";
 
 const getAuthTokens = () => {
     const authTokens = localStorage.getItem('auth_tokens');
@@ -8,10 +8,10 @@ const getAuthTokens = () => {
 }
 
 const axiosInstance = axios.create({
-    baseURL:BASE_URL,
-    timeout:5000,
+    baseURL: BASE_URL,
+    timeout: 5000,
     headers: {
-        Authorization: getAuthTokens() !== null 
+        Authorization: getAuthTokens() !== null
             ? 'Bearer ' + getAuthTokens()
             : null,
         'Content-Type': "application/json",

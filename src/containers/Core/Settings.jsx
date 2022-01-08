@@ -38,7 +38,7 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
             })
             .catch(err => {
                 setGlobalLoading(false);
-            })
+            })  //eslint-disable-next-line
     }, [formId])
 
     const handleSubmit = e => {

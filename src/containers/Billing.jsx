@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Pricing } from '../components';
 import pricingJSON from '../pricing.json';
 import styled from 'styled-components';
-import { GlobalButton } from '../globalStyles';
 import { AuthContext } from '../context/AuthContext';
 
 const BillingContainer = () => {
@@ -12,7 +11,7 @@ const BillingContainer = () => {
         <Wrapper>
             <form
                 method="POST"
-                action={`http://localhost:8000/create-customer-portal/${user.id}/`}
+                action={`http://api.dropform.co/create-customer-portal/${user.id}/`}
             >
                 <button type="submit" >
                     Manage billing
@@ -29,7 +28,7 @@ const BillingContainer = () => {
                         ))}
                     </div>
                     <form
-                        action={`http://localhost:8000/create-checkout-session/${item.type}/${user.id}/`
+                        action={`http://api.dropform.co/create-checkout-session/${item.type}/${user.id}/`
                         }
                         method="POST"
                     >
@@ -49,10 +48,6 @@ const Wrapper = styled.div`
     padding: 10px;
     display: flex;
     justify-content: space-between;
-`;
-
-const Frame = styled.div`
-    display: flex;
 `;
 
 

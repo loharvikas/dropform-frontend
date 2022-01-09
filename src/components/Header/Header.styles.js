@@ -47,7 +47,7 @@ export const LogoContainer = styled(ReactRouterLink)`
 
 export const LogoText = styled.h1`
     margin-left:10px;
-    color: var(--txt-primary);
+    color: var(--BLUE-900);
     font-size: 20px;
 `
 

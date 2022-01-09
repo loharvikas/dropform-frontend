@@ -14,16 +14,17 @@ export const AuthProvider = ({ children }) => {
     const [authTokens, setAuthTokens] = useLocalStorage('auth_tokens', null);
 
     const logOut = useCallback(() => {
+        console.log('%c I am called!', 'color: blue;')
         setUser('');
         setAuthTokens('');
-        localStorage.removeItem('auth_okens')
+        localStorage.removeItem('auth_tokens')
         localStorage.removeItem('user')
     }, [setUser, setAuthTokens])
 
 
     const updateTokens = useCallback(() => {
         const refreshToken = authTokens?.refresh_token;
-
+        console.log('%c UpdateTokens called!', "color: red")
         axiosInstance
             .post('token/refresh/', { refresh: refreshToken })
             .then(res => {
@@ -49,7 +50,6 @@ export const AuthProvider = ({ children }) => {
             email: response.profileObj.email,
             full_name: response.profileObj.givenName + ' ' + response.profileObj.familyName
         }
-        console.log({ payload })
         axiosInstance
             .post('google/', payload)
             .then((res) => {
@@ -62,18 +62,27 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (authTokens) {
+            console.log('%c UseEffect called', "color: green")
             const decoded = jwt_decode(authTokens.access_token);
             const expiryDate = decoded.exp * 1000
             if (Date.now() >= expiryDate) {
                 updateTokens();
-            } else {
+            }
+            else {
                 axiosInstance
-                    .get(`users/${user.id}/`)
+                    .get(`users/${user?.id}/`)
                     .then(res => {
-                        console.log({ res })
+                        console.log('%c Success in UseEffect called', "color: lightblue");
                         setUser(res.data)
                     })
-                    .catch(err => err)
+                    .catch(err => {
+                        console.log('%c Error in UseEffect called', "color: pink");
+                        if (err.response.status === 404 || err.response.status === 401) {
+                            console.log('%c STATUS 404 ', "color: yellow");
+                            console.log({ err })
+                            logOut();
+                        }
+                    })
             }
         } //eslint-disable-next-line
     }, [])

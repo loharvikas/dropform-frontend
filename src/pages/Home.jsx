@@ -3,6 +3,7 @@ import { HeaderContainer } from '../containers';
 import { Wrapper } from '../globalStyles';
 
 const Home = () => {
+    console.log('%c home page', 'color: pink')
     return (
         <>
             <HeaderContainer />

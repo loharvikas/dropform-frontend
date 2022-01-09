@@ -19,7 +19,7 @@ const Signup = () => {
     const [loading, setLoading] = useState(false);
     const { setUser, setAuthTokens, GoogleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-
+    console.log('%c Sigup page', 'color: pink')
 
     const isInValid = email === '' || password === '';
 

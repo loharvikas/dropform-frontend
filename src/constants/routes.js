@@ -1,7 +1,7 @@
 export const HOME = '/';
-export const APP = '/app';
+export const PRODUCT = '/product';
 export const DASHBOARD = 'dashboard';
-export const REDIRECT = '/app/dashboard';
+export const REDIRECT = '/product/dashboard';
 export const FORMS = 'forms/';
 export const WORKSPACE = 'workspace/';
 export const ACCOUNT = 'account';

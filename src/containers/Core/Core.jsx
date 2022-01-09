@@ -20,7 +20,7 @@ const FormContainer = () => {
 
 
   useEffect(() => {
-    ws = new WebSocket(`ws://127.0.0.1:8000/ws/form/${formId}/`)
+    ws = new WebSocket(`ws://api.dropform.co/ws/form/${formId}/`)
     fetchData() //eslint-disable-next-line
   }, [formId])
 

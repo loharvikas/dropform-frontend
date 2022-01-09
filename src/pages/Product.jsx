@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Header } from '../components';
-import { InnerWrapper } from '../globalStyles';
+import { InnerWrapper, LoaderWrapper, Loader } from '../globalStyles';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import { MembersContainer, WorkspaceContainer, SidebarContainer, FormContainer, AccountContainer, BillingContainer } from '../containers';
 import * as ROUTES from '../constants/routes';
@@ -8,19 +8,24 @@ import { SideBarBreak } from '../components/Sidebar/Sidebar.styles';
 import { AuthContext } from '../context/AuthContext'
 import { Alert } from '../components';
 
+
 import axiosInstance from '../lib/axios';
 
-const App = () => {
+const Product = () => {
     const [workspaceList, setWorkspaceList] = useState([]);
+    const [loading, setLoading] = useState(false);
     const { logOut, user } = useContext(AuthContext);
 
     const sendActivationEmail = () => {
+        setLoading(true)
         axiosInstance
             .post(`users/send-activation-email/`)
             .then((res) => {
+                setLoading(false);
                 console.log({ res })
             })
             .catch((err) => {
+                setLoading(false);
                 console.log({ err })
             })
     }
@@ -28,6 +33,11 @@ const App = () => {
 
     return (
         <InnerWrapper>
+            {loading &&
+                <LoaderWrapper>
+                    <Loader />
+                </LoaderWrapper>
+            }
             <SidebarContainer
                 setWorkspaceList={setWorkspaceList}
                 workspaceList={workspaceList}
@@ -84,4 +94,4 @@ const App = () => {
     )
 }
 
-export default App
+export default Product;

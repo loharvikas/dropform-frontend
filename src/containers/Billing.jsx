@@ -4,6 +4,8 @@ import pricingJSON from '../pricing.json';
 import styled from 'styled-components';
 import { AuthContext } from '../context/AuthContext';
 
+const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL
+
 const BillingContainer = () => {
     const { user } = useContext(AuthContext);
 
@@ -11,7 +13,7 @@ const BillingContainer = () => {
         <Wrapper>
             <form
                 method="POST"
-                action={`http://api.dropform.co/create-customer-portal/${user.id}/`}
+                action={`${BACKEND_URL}/create-customer-portal/${user.id}/`}
             >
                 <button type="submit" >
                     Manage billing
@@ -28,7 +30,7 @@ const BillingContainer = () => {
                         ))}
                     </div>
                     <form
-                        action={`http://api.dropform.co/create-checkout-session/${item.type}/${user.id}/`
+                        action={`${BACKEND_URL}/create-checkout-session/${item.type}/${user.id}/`
                         }
                         method="POST"
                     >

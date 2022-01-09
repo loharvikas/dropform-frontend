@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://api.dropform.co/api/";
+const BASE_URL = "https://api.dropform.co/api/";
 
 const getAuthTokens = () => {
     const authTokens = localStorage.getItem('auth_tokens');

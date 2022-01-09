@@ -19,7 +19,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
       with:
         source: "."
-        target: "dropform-frontend"
+        target: "/var/www/dropform-frontend/"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master

@@ -34,7 +34,8 @@ export const Title = styled.h1`
 
 export const Body = styled.div`
   max-height: 450px;
-  overflow: scroll;
+  overflow: scroll
+
 `;
 
 export const Text = styled.p`
@@ -65,8 +66,8 @@ export const Close = styled.button`
     top: 0;
     content: ' ';
     height: 22px;
-    width: 2px;
-    background-color: #333;
+    width: 3px;
+    background-color: var(--PRIMARY-500);
   }
 
   &:before {
@@ -88,7 +89,7 @@ export const Button = styled(GlobalButton)`
 export const Footer = styled.div`
     height: 80px;
     padding: 20px;
-    background: var(--GREY-200);
+    background-color: var(--BLUE-100);
     display: flex;
     flex-direction: row-reverse;
 `

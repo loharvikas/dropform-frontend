@@ -19,8 +19,6 @@ const Signup = () => {
     const [loading, setLoading] = useState(false);
     const { setUser, setAuthTokens, GoogleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
-    console.log('%c Sigup page', 'color: pink')
-
     const isInValid = email === '' || password === '';
 
     const handleSubmit = e => {
@@ -43,7 +41,7 @@ const Signup = () => {
                 setUser(data.user)
                 axiosInstance.defaults.headers['Authorization'] =
                     'Bearer ' + data.access
-                navigate(ROUTES.APP + '/' + ROUTES.DASHBOARD);
+                navigate(ROUTES.PRODUCT + '/' + ROUTES.DASHBOARD);
             })
             .catch(error => {
                 setLoading(false)

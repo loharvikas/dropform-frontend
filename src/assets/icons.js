@@ -105,3 +105,10 @@ export const PlusSVG = () => (
 export const CheckSVG = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="25px" height="25px"><linearGradient id="TpFkpHq7AGWb~Tkla4kyga" x1="24" x2="24" y1="6.121" y2="42.039" gradientUnits="userSpaceOnUse"><stop offset="0" stopColor="#9dffce" /><stop offset="1" stopColor="#50d18d" /></linearGradient><path fill="url(#TpFkpHq7AGWb~Tkla4kyga)" d="M40,42H8c-1.1,0-2-0.9-2-2V8c0-1.1,0.9-2,2-2h32c1.1,0,2,0.9,2,2v32C42,41.1,41.1,42,40,42z" /><linearGradient id="TpFkpHq7AGWb~Tkla4kygb" x1="13" x2="36" y1="24.793" y2="24.793" gradientUnits="userSpaceOnUse"><stop offset=".824" stopColor="#135d36" /><stop offset=".931" stopColor="#125933" /><stop offset="1" stopColor="#11522f" /></linearGradient><path fill="url(#TpFkpHq7AGWb~Tkla4kygb)" d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414	c0.391-0.391,1.024-0.391,1.414,0L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414	c0.391,0.391,0.391,1.024,0,1.414l-13,13C22.317,33.098,21.683,33.098,21.293,32.707z" /></svg>
 )
+
+
+// ---------------------------------------
+
+// export const CopyClipboardSVG = () => (
+//     <svg enable-background="new 0 0 64 64" height="64px" id="Layer_1" version="1.1" viewBox="0 0 64 64" width="64px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M23.572,14.456h16.857c0.553,0,1-0.447,1-1v-3.161H37V7.73c0-1.104-0.896-2-2-2h-6c-1.104,0-2,0.896-2,2v2.565h-4.428   v3.161C22.572,14.009,23.019,14.456,23.572,14.456z" /><path d="M43.429,10.295v3.161c0,1.654-1.346,3-3,3H23.572c-1.654,0-3-1.346-3-3v-3.161H12V54.27c0,2.209,1.791,4,4,4h32   c2.209,0,4-1.791,4-4V10.295H43.429z M47,53.27H17V20.929h30V53.27z" /></g></svg>
+// )

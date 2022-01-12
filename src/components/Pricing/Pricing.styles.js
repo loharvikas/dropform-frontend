@@ -62,6 +62,7 @@ export const SmallText = styled.small`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    font-weight: 550;
     svg {
         margin-right: 5px;
     }

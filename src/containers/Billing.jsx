@@ -4,7 +4,12 @@ import pricingJSON from '../pricing.json';
 import styled from 'styled-components';
 import { AuthContext } from '../context/AuthContext';
 
-const BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL
+let BACKEND_URL = ''
+if (process.env.REACT_APP_DEVELOPMENT_MODE === 'true') {
+    BACKEND_URL = process.env.REACT_APP_LOCAL_BACKEND_URL
+} else {
+    BACKEND_URL = process.env.REACT_APP_BASE_BACKEND_URL
+}
 
 const BillingContainer = () => {
     const { user } = useContext(AuthContext);

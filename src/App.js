@@ -8,7 +8,7 @@ import * as ROUTES from './constants/routes';
 const Home = React.lazy(() => import('./pages/Home'))
 const Product = React.lazy(() => import('./pages/Product'))
 const Signin = React.lazy(() => import('./pages/Signin'))
-const Signup = React.lazy(() => import('./pages/Home'))
+const Signup = React.lazy(() => import('./pages/Signup'))
 
 function App() {
   return (

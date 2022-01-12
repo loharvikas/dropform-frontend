@@ -6,6 +6,7 @@ import { SettingsContainer } from './Settings';
 import GridContainter from './SubmissionGrid';
 import { getDatetime } from '../../utils/helper';
 import axiosInstance from '../../lib/axios';
+import APIViewContainer from './APIView';
 
 let ws = '';
 
@@ -135,6 +136,10 @@ const FormContainer = () => {
       {menu === 'Settings' &&
 
         <SettingsContainer setLoading={setLoading} formId={formId} />
+      }
+
+      {menu === 'API' &&
+        <APIViewContainer formId={formId} />
       }
     </>
   )

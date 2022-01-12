@@ -172,7 +172,7 @@ export const GlobalButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        filter: brightness(0.9)
+        box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.1);
     }
 
     ${({ subType }) => subType === STYLES.BUTTON_DANGER && `
@@ -181,10 +181,6 @@ export const GlobalButton = styled.button`
         background: transparent;
         transition:background linear 300ms;
 
-        // &:hover {
-        //     color:#fff;
-        //     background:#F93154;
-        // }
     `}
 
     ${({ subType }) => subType === STYLES.BUTTON_LINK && `
@@ -200,8 +196,6 @@ export const GlobalButton = styled.button`
         background-color: var(--WHITE-999);
         border: var(--BORDER-SECONDARY);
         color: var(--GREY-900);
-
-        box-shadow:rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(64 68 82 / 16%) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(64 68 82 / 8%) 0px 2px 5px 0px;
     `}
 `
 

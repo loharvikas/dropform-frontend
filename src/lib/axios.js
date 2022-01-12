@@ -1,6 +1,11 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.dropform.co/api/";
+let BASE_URL = ''
+if (process.env.REACT_APP_DEVELOPMENT_MODE === 'true') {
+    BASE_URL = "http://localhost:8000/api/"
+} else {
+    BASE_URL = "https://api.dropform.co/api/"
+}
 
 const getAuthTokens = () => {
     const authTokens = localStorage.getItem('auth_tokens');

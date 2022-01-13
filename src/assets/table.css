@@ -29,3 +29,13 @@
 .new-world:hover {
     border: 1px solid var(--txt-primary);
 }
+
+button {
+    color: var(--WHITE-999);
+    background-color: var(--PRIMARY-500);
+    border: 2px solid var(--BLACK-999);
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}

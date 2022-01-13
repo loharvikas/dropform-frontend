@@ -109,6 +109,6 @@ export const CheckSVG = () => (
 
 // ---------------------------------------
 
-// export const CopyClipboardSVG = () => (
-//     <svg enable-background="new 0 0 64 64" height="64px" id="Layer_1" version="1.1" viewBox="0 0 64 64" width="64px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M23.572,14.456h16.857c0.553,0,1-0.447,1-1v-3.161H37V7.73c0-1.104-0.896-2-2-2h-6c-1.104,0-2,0.896-2,2v2.565h-4.428   v3.161C22.572,14.009,23.019,14.456,23.572,14.456z" /><path d="M43.429,10.295v3.161c0,1.654-1.346,3-3,3H23.572c-1.654,0-3-1.346-3-3v-3.161H12V54.27c0,2.209,1.791,4,4,4h32   c2.209,0,4-1.791,4-4V10.295H43.429z M47,53.27H17V20.929h30V53.27z" /></g></svg>
-// )
+export const CopyClipboardSVG = () => (
+    <svg margin="[object Object]" aria-hidden="true" class="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-svg Icon--clipboard-svg Icon-color-svg Icon-color--gray-svg" height="15" width="15" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M7 5h2a3 3 0 0 0 3-3 2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2 3 3 0 0 0 3 3zM6 2a2 2 0 1 1 4 0 1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z" fill-rule="evenodd"></path></svg>
+)

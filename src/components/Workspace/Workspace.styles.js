@@ -26,7 +26,8 @@ export const Title = styled.h1``;
 export const Button = styled(GlobalButton)`
     margin-right: 10px;
     padding: 5px 10px;
-    height: 30px;
+    height: 32px;
+    
     &:last-of-type {
         margin-right: 0;
     }

@@ -67,6 +67,20 @@ export const LinkText = styled(ReactRouterNavLink)`
         color:#1C1C1C;
     }
 
+    ${({ type }) => type === 'defined' && `
+        background-color: var(--YELLOW-500);
+        padding: 3px 8px;
+        font-weight: bold;
+        font-size: 12px;
+        color: #fff;
+        text-transform: uppercase;
+        border-radius: 4px;
+        cursor: default;
+        &.active {
+            color: #fff;
+        }
+    `}
+
 `
 
 export const ButtonLink = styled(GlobalButton)`

@@ -51,6 +51,7 @@ const Product = () => {
                             <Header.LinkText to={ROUTES?.MEMBERS} >Members</Header.LinkText>
                             <Header.LinkText to={ROUTES?.BILLING}>Billing</Header.LinkText>
                             <Header.LinkText to={ROUTES?.ACCOUNT}>Account</Header.LinkText>
+                            <Header.LinkText to='#' type='defined'>{user.account_type}</Header.LinkText>
                         </Header.Group>
                         <Header.Group>
                             <Header.ButtonLink primary='false' to={ROUTES.SIGN_IN} onClick={logOut}>Signout</Header.ButtonLink>

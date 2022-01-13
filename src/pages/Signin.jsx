@@ -18,7 +18,6 @@ const Signin = () => {
     const { setUser, setAuthTokens, GoogleLogin } = useContext(AuthContext);
 
     const isInValid = email === '' || password === '';
-    console.log('%c Sigin page', 'color: pink')
     const handleSubmit = e => {
         e.preventDefault();
         setLoading(true);

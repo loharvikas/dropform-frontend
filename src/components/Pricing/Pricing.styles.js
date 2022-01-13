@@ -14,7 +14,8 @@ export const Container = styled.div`
     border-radius: 15px;
     background-color: var(--WHITE-999);
     margin-right: 10px;
-
+    border: 2px solid var(--BLACK-999);
+    
     &:last-of-type {
         margin-right: 0px;
     }
@@ -35,10 +36,6 @@ export const Container = styled.div`
         span {
             color: var(--WHITE-999);
         }
-    }
-
-    &:hover {
-        box-shadow: 1px 1px 100px 1px rgba(0,0,0,0.1);
     }
 `;
 
@@ -74,4 +71,9 @@ export const Button = styled(GlobalButton)`
     color: var(--BLACK-999);
     border: 2px solid var(--BLACK-999);
     font-weight: bold;
+    transition: border 200ms linear;
+
+    &:hover {
+        border: 2px solid var(--PRIMARY-500);
+    }
 `;

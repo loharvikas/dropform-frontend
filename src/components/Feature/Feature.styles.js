@@ -37,7 +37,9 @@ export const InputBox = styled.div`
     border-radius: 3px;
     margin-bottom: 10px;
     color: var(--GREY-900);
-    /* background-color: var(--BLUE-100); */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-weight: 500;
     cursor: pointer;
 `;

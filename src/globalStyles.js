@@ -172,15 +172,22 @@ export const GlobalButton = styled.button`
     cursor: pointer;
 
     &:hover {
-        box-shadow: 1px 1px 10px 2px rgba(0,0,0,0.1);
+        box-shadow: 1px 1px 5px 2px rgba(0,0,0,0.1);
+    }
+
+    &:disabled {
+        filter: brightness(1.5);
+        
+        &:hover {
+            box-shadow: none;
+        }
     }
 
     ${({ subType }) => subType === STYLES.BUTTON_DANGER && `
         border: var(--BORDER-DANGER);
-        color: #F93154;
-        background: transparent;
+        color: var(--WHITE-999);
+        background: var(--RED-500);
         transition:background linear 300ms;
-
     `}
 
     ${({ subType }) => subType === STYLES.BUTTON_LINK && `
@@ -223,7 +230,7 @@ export const GoogleButton = styled.button`
     border: none;
     background-color: var(--BLUE-900);
     color: var(--WHITE-999);
-    padding: 10px 0;
+    padding: 8px 0;
     border-radius: 5px;
     font-weight: 600;
     cursor: pointer;

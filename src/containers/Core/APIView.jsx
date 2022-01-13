@@ -2,6 +2,7 @@ import React from 'react';
 import { Feature } from '../../components';
 import FileUploadImage from '../../assets/images/file-upload.png';
 import StandardImage from '../../assets/images/standard.png';
+import { CopyClipboardSVG } from '../../assets/icons';
 
 const APIViewContainer = ({ formId }) => {
     const formEndpointURL = `https://www.dropform.co/f/${formId}/`
@@ -13,6 +14,7 @@ const APIViewContainer = ({ formId }) => {
                 <Feature.Text>Place this URL in the action attribute of your form. Also, make sure to add <b>method="POST"</b>. Finally, ensure that each input has a <b>name</b> attribute.</Feature.Text>
                 <Feature.InputBox onClick={() => clipboardCopy(formEndpointURL)}>
                     {formEndpointURL}
+                    <CopyClipboardSVG />
                 </Feature.InputBox>
             </Feature.Group>
 
@@ -25,12 +27,12 @@ const APIViewContainer = ({ formId }) => {
                 <Feature.Group>
                     <Feature.SubTitle>File Upload</Feature.SubTitle>
                     <Feature.Text>
-                        In order to allow file upload for your endpoint, add <b>enctype="multipart/form-data"</b>to your form tag and add <b>input type="file" name="file"</b> into your form.
+                        In order to allow file upload for your endpoint, add <b color='black'>enctype="multipart/form-data"</b>to your form tag and add <b color='black'>input type="file" name="file"</b> into your form.
                     </Feature.Text>
                     <img src={FileUploadImage} alt='File upload code example.' />
                 </Feature.Group>
             </Feature.Group>
-        </Feature>
+        </Feature >
     )
 }
 

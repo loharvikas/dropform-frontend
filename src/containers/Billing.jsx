@@ -15,48 +15,64 @@ const BillingContainer = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <Wrapper>
-            <form
-                method="POST"
-                action={`${BACKEND_URL}/create-customer-portal/${user.id}/`}
-            >
-                <button type="submit" >
-                    Manage billing
-                </button>
-            </form>
-            {pricingJSON.pricingInfo.map(item => (
-                <Pricing key={item.id}>
-                    <div>
-                        <Pricing.Title>{item.type}</Pricing.Title>
-                        <Pricing.Text><span>&#8377;{item.price}</span> / month</Pricing.Text>
-                        <Pricing.Text>{item.description}</Pricing.Text>
-                        {item.features.map((feature, index) => (
-                            <Pricing.SmallText key={index}>{feature}</Pricing.SmallText>
-                        ))}
-                    </div>
-                    <form
-                        action={`${BACKEND_URL}/create-checkout-session/${item.type}/${user.id}/`
-                        }
-                        method="POST"
-                    >
-                        <Pricing.Button type="submit">Choose Plan</Pricing.Button>
-                    </form>
-                </Pricing>
-            ))}
-        </Wrapper>
+        <Wrapper direction='column'>
+            <FormWrapper>
+                <form
+                    method="POST"
+                    action={`${BACKEND_URL}/create-customer-portal/${user.id}/`}
+                >
+                    <button type="submit">
+                        Manage billing
+                    </button>
+                </form>
+            </FormWrapper>
+            <Wrapper direction='row'>
+                {
+                    pricingJSON.pricingInfo.map(item => (
+                        <Pricing key={item.id}>
+                            <div>
+                                <Pricing.Title>{item.type}</Pricing.Title>
+                                <Pricing.Text><span>&#8377;{item.price}</span> / month</Pricing.Text>
+                                <Pricing.Text>{item.description}</Pricing.Text>
+                                {item.features.map((feature, index) => (
+                                    <Pricing.SmallText key={index}>{feature}</Pricing.SmallText>
+                                ))}
+                            </div>
+                            {
+                                user.paid_user === false &&
+                                <form
+                                    action={`${BACKEND_URL}/create-checkout-session/${item.type}/${user.id}/`
+                                    }
+                                    method="POST"
+                                >
+                                    <Pricing.Button type="submit">Choose Plan</Pricing.Button>
+                                </form>
+                            }
+                        </Pricing>
+                    ))
+                }
+            </Wrapper>
+        </Wrapper >
     )
 }
 
 const Wrapper = styled.div`
     width: 100%;
     height: 100%;
-    margin-top: 50px;
     background: var(--WHITE-999);
-    padding: 10px;
+    padding: 10px 5px;
     display: flex;
+    flex-direction: ${({ direction }) => direction};
     justify-content: space-between;
 `;
 
+const FormWrapper = styled.div`
+    margin-top: 10px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-left: 10px;
+`
 
 
 export default BillingContainer;

@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     border-radius: 5px;
     box-shadow: var(--box-shadow);
     padding: 25px 50px;
-    width: ${({ type }) => type === 'subForm' ? '900px' : '35%'};
+    width: ${({ type }) => type === 'subForm' ? '900px' : '32%'};
 
     @media screen and (max-width: 1100px) {
         width: 60%;
@@ -190,12 +190,9 @@ export const Error = styled.div`
     margin-bottom: 20px;        
     font-size: 14px;
     font-weight: 500;
-    
-    ${({ type }) => type === 'Error' && `
-        border: var(--BORDER-DANGER);
-        background-color: var(--RED-200);
-        color: var(--RED-500);
-    `}
+    border: var(--BORDER-DANGER);
+    background-color: var(--RED-200);
+    color: var(--RED-500);
 
     ${({ type }) => type === 'Success' && `
         border: var(--BORDER-SUCCESS);

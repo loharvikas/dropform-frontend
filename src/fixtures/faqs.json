@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "header": "Do you offer free tier ?",
+    "body": "Yes it is free forever. Use free tier for testing and development, limited to 50 submissions/mo"
+  },
+  {
+    "id": 2,
+    "header": "How much does Dropform cost?",
+    "body": "We offer 3 different premium packages organized around different levels of needs. You can select the one that fits your needs and by using your credit card you can start your premium subscription."
+  },
+  {
+    "id": 3,
+    "header": "How do you store my credit card information?",
+    "body": "We use Stripe as our payment processing partner to securely store your card, easily and securely enable payment features in our services ."
+  },
+  {
+    "id": 4,
+    "header": "How do I cancel?",
+    "body": "Dropform is flexible. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account at any time."
+  },
+  {
+    "id": 5,
+    "header": "What if I exceed the monthly submission limit?",
+    "body": "Don't worry! We will save them in a secure place until the first day of next month, but you can't see them unless you upgrade your plan. By upgrading your plan you can recover those submissions!"
+  }
+]

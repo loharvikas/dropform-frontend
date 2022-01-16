@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 import axiosInstance from '../lib/axios';
 import * as ROUTES from '../constants/routes';
 import * as STYLES from '../constants/styles';
+import { LoaderWrapper, Loader } from '../globalStyles';
 
 
 const Frame = styled.div`
@@ -27,12 +28,15 @@ const SidebarContainer = ({ workspaceList, setWorkspaceList }) => {
         axiosInstance
             .get(`workspace/${user.id}`)
             .then(res => {
+                console.log('SOME RES AT SIDEBAR')
                 if (res?.status === 200) {
                     setWorkspaceList(res.data);
                 }
             })
             .catch(error => {
+                console.log('COULD BE AN ERROR AT SIDEBAR')
                 if (error?.response?.status === 401) {
+                    console.log('$404 at sidebar')
                     updateTokens();
                 }
             });
@@ -93,6 +97,7 @@ const initialData = {
 
 const CreateWorkspace = ({ workspaceList, setWorkspaceList, user, setShowForm }) => {
     const [form, setForm] = useState(initialData);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = e => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -100,6 +105,7 @@ const CreateWorkspace = ({ workspaceList, setWorkspaceList, user, setShowForm })
 
 
     const handleSubmit = e => {
+        setLoading(true);
         e.preventDefault();
         const { name, description } = form;
 
@@ -112,11 +118,13 @@ const CreateWorkspace = ({ workspaceList, setWorkspaceList, user, setShowForm })
         axiosInstance
             .post('workspace/', payload)
             .then((res) => {
+                setLoading(false);
                 setForm(initialData)
                 setShowForm(false);
                 setWorkspaceList([...workspaceList, res.data]);
             })
             .catch(err => {
+                setLoading(false);
                 setForm(initialData)
             })
     }
@@ -128,6 +136,11 @@ const CreateWorkspace = ({ workspaceList, setWorkspaceList, user, setShowForm })
                     <Modal.Title>New Workspace</Modal.Title>
                     <Modal.Text>Create new workspace and start collecting submissions.</Modal.Text>
                 </Modal.Header>
+                {loading &&
+                    <LoaderWrapper>
+                        <Loader />
+                    </LoaderWrapper>
+                }
                 <Modal.Body>
                     <Form.Wrapper type='subForm'>
                         <Form.Base>

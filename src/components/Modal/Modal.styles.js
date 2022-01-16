@@ -34,8 +34,9 @@ export const Title = styled.h1`
 
 export const Body = styled.div`
   max-height: 450px;
-  overflow: scroll
-
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Text = styled.p`
@@ -46,8 +47,8 @@ export const Text = styled.p`
 
 export const Close = styled.button`
   position: absolute;
-  top:10px;
-  right: 10px;
+  top:12px;
+  right: 0px;
   width: 22px;
   height: 22px;
   opacity: 0.5;

@@ -8,3 +8,5 @@ export { default as Modal } from './Modal/Modal';
 export { default as Alert } from './Alert/Alert';
 export { default as Pricing } from './Pricing/Pricing';
 export { default as Feature } from './Feature/Feature';
+export { default as Accordion } from './Accordion/Accordion';
+export { default as Footer } from './Footer/Footer';

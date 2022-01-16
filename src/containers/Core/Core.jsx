@@ -21,7 +21,14 @@ const FormContainer = () => {
 
 
   useEffect(() => {
-    ws = new WebSocket(`ws://api.dropform.co/ws/form/${formId}/`)
+    let websocket_url;
+    if (process.env.REACT_APP_DEVELOPMENT_MODE === 'true') {
+      websocket_url = `ws://localhost:8000/ws/form/${formId}/`
+    } else {
+      websocket_url = `wss://api.dropform.co/ws/form/${formId}/`
+    }
+    console.log(websocket_url)
+    ws = new WebSocket(websocket_url);
     fetchData() //eslint-disable-next-line
   }, [formId])
 

@@ -5,9 +5,9 @@ import { GlobalButton } from "../../globalStyles";
 export const Container = styled.div`
     width: 100%;
     display: flex;
+    margin: 0;
     flex-direction: column;
-    border-bottom: var(--BORDER-SECONDARY);
-    background-color: var(--WHITE-999);
+    background-color: var(--PURPLE-100);
     position: sticky;
     height: ${({ main }) => main === 'true' ? '70px' : '50px'};
     top: 0;

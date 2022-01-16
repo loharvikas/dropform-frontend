@@ -6,15 +6,14 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
     width: 500px;
     padding: 30px 20px;
     height: 550px;
     margin-top: auto;
-    border-radius: 15px;
-    background-color: var(--WHITE-999);
+    border-radius: 10px;
     margin-right: 10px;
     border: 2px solid var(--BLACK-999);
+    background-color: var(--WHITE-999);
     
     &:last-of-type {
         margin-right: 0px;
@@ -39,14 +38,15 @@ export const Container = styled.div`
     }
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h2`
+
     margin-bottom: 10px;
 `;
 
 export const Text = styled.p`
-    color:var(--GREY-500);
+    color:var(--GREY-800);
     margin-bottom: 15px;
-    font-weight: 500;
+    font-weight: 400;
 
     span {
         font-size: 30px;
@@ -58,8 +58,8 @@ export const Text = styled.p`
 export const SmallText = styled.small`
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    font-weight: 550;
+    margin-bottom: 8px;
+    font-weight: 450;
     svg {
         margin-right: 5px;
     }

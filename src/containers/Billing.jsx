@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Pricing } from '../components';
-import pricingJSON from '../pricing.json';
+import pricingJSON from '../fixtures/pricing.json';
 import styled from 'styled-components';
 import { AuthContext } from '../context/AuthContext';
 
@@ -16,16 +16,18 @@ const BillingContainer = () => {
 
     return (
         <Wrapper direction='column'>
-            <FormWrapper>
-                <form
-                    method="POST"
-                    action={`${BACKEND_URL}/create-customer-portal/${user.id}/`}
-                >
-                    <button type="submit">
-                        Manage billing
-                    </button>
-                </form>
-            </FormWrapper>
+            {user &&
+                <FormWrapper>
+                    <form
+                        method="POST"
+                        action={`${BACKEND_URL}/create-customer-portal/${user?.id}/`}
+                    >
+                        <button type="submit">
+                            Manage billing
+                        </button>
+                    </form>
+                </FormWrapper>
+            }
             <Wrapper direction='row'>
                 {
                     pricingJSON.pricingInfo.map(item => (
@@ -39,7 +41,7 @@ const BillingContainer = () => {
                                 ))}
                             </div>
                             {
-                                user.paid_user === false &&
+                                user?.paid_user === false &&
                                 <form
                                     action={`${BACKEND_URL}/create-checkout-session/${item.type}/${user.id}/`
                                     }
@@ -59,8 +61,9 @@ const BillingContainer = () => {
 const Wrapper = styled.div`
     width: 100%;
     height: 100%;
-    background: var(--WHITE-999);
+    /* background: var(--WHITE-999); */
     padding: 10px 5px;
+    border-radius: 3px;
     display: flex;
     flex-direction: ${({ direction }) => direction};
     justify-content: space-between;

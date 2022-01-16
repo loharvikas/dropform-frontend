@@ -23,10 +23,12 @@ export const AuthProvider = ({ children }) => {
 
     const updateTokens = useCallback(() => {
         const refreshToken = authTokens?.refresh_token;
+        console.log("CALLED UPADETE TOKENS")
         axiosInstance
             .post('token/refresh/', { refresh: refreshToken })
             .then(res => {
                 if (res.status === 200) {
+                    console.log('WAHTERERERER')
                     const newAuthTokens = {
                         refresh_token: refreshToken,
                         access_token: res.data.access
@@ -36,7 +38,9 @@ export const AuthProvider = ({ children }) => {
                 }
             })
             .catch(err => {
-                if (err.response.status === 401) {
+                console.log("SOME ERRERERE")
+                if (err?.response?.status === 401) {
+                    console.log("NEW ERRRRR")
                     logOut();
                 }
             })

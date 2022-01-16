@@ -73,7 +73,7 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
                 document.body)}
             <Form.Wrapper type='subForm'>
                 {loading && <Form.Loader />}
-                {message.data && <Form.Alert type={message.type}>{message.data}</Form.Alert>}
+                {message.data && <Form.Error type={message.type}>{message.data}</Form.Error>}
                 <Form.Base onSubmit={handleSubmit}>
                     <Frame>
                         <Form.Title type='subForm'>Settings</Form.Title>

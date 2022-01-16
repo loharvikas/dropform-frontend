@@ -5,3 +5,5 @@ export { default as WorkspaceContainer } from './Workspace';
 export { default as FormContainer } from './Core/Core';
 export { default as AccountContainer } from './Account';
 export { default as BillingContainer } from './Billing';
+export { default as FaqsContainer } from './faqs';
+export { default as FooterContainer } from './Footer';

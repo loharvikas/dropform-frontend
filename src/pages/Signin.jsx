@@ -61,7 +61,7 @@ const Signin = () => {
                 <Form.Wrapper>
                     {loading && <Form.Loader />}
                     <Form.Title>Welcome back!</Form.Title>
-                    {message && <Form.Alert type='Error'>{message}</Form.Alert>}
+                    {message && <Form.Error type='Error'>{message}</Form.Error>}
                     <Form.Base onSubmit={handleSubmit}>
                         <Form.Label htmlFor='email'>
                             Email Address

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { Link, useParams } from 'react-router-dom';
 
+
 import { Form, Modal } from '../components';
 import { FormSVG, CreateFormSVG } from '../assets/icons';
+import { AuthContext } from '../context/AuthContext';
 import { Workspace } from '../components';
 import { getDatetime } from '../utils/helper';
 import * as ROUTES from '../constants/routes';
@@ -19,20 +21,25 @@ const WorkspaceContainer = ({ workspaceList, setWorkspaceList }) => {
     const [loading, setLoading] = useState(true);
     const [toggle, setToggle] = useState(false);
     const { workspaceId } = useParams();
+    const { logOut } = useContext(AuthContext);
 
     useEffect(() => {
         setLoading(true);
-
         axiosInstance
             .get(`forms/${workspaceId}/`)
             .then(res => {
+                console.log('RESPONSE WOTKSPACE')
                 setLoading(false);
                 setForms(res.data)
             })
             .catch((err) => {
+                if (err?.response?.status === 401) {
+                    console.log('LOGOUT WORKSPCAE')
+                    logOut();
+                }
                 setLoading(false);
             })
-    }, [workspaceId])
+    }, [workspaceId, logOut])
 
 
     useEffect(() => {
@@ -132,11 +139,11 @@ const DeleteWorkspace = ({ workspace, setToggle, setWorkspaceList }) => {
             <Modal.Inner>
                 <Modal.Header>
                     <Modal.Title>
-                        Delete this workspace.
+                        Delete this workspace
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div style={{ fontWeight: 'bold' }}>
+                    <div style={{ fontWeight: '600', padding: '20px', fontSize: '14px', color: 'var(--GREY-500)' }}>
                         Are you sure you want to delete this workspace ?
                     </div>
                     <Modal.Close onClick={() => setToggle(false)} />
@@ -188,8 +195,8 @@ const CreateFormContainer = ({ setShowForm, forms, setForms, workspace }) => {
             })
             .catch(err => {
                 setLoading(false);
-                setForm('')
-                setError(err.message)
+                setForm('');
+                setError('Invalid data please try again!')
             })
     }
 
@@ -200,10 +207,16 @@ const CreateFormContainer = ({ setShowForm, forms, setForms, workspace }) => {
                     <Modal.Title>New Form</Modal.Title>
                     <Modal.Text>Create new form and start collection submissions.</Modal.Text>
                 </Modal.Header>
+                {loading &&
+                    <LoaderWrapper>
+                        <Loader />
+                    </LoaderWrapper>
+                }
                 <Modal.Body>
                     <Form.Wrapper type='subForm'>
-                        {loading && <Form.Loader />}
-                        {error && <Form.Error>{error}</Form.Error>}
+                        {error.length > 0 &&
+                            <Form.Error>{error}</Form.Error>
+                        }
                         <Form.Base>
                             <Form.Label htmlFor='form_name'>
                                 Form name

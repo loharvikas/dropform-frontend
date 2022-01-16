@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Title, InputBox, Link, Text, Frame, Group, Image, SubTitle } from './Feature.styles';
+import { Container, Title, InputBox, Link, Text, Frame, Group, Image, SubTitle, Video, ButtonLink } from './Feature.styles';
 
 export default function Feature({ children, ...restProps }) {
     return <Container {...restProps}>{children}</Container>
@@ -32,6 +32,11 @@ Feature.Image = function FeatureImage({ ...restProps }) {
     return <Image {...restProps} />
 }
 
+Feature.Video = function FeatureVideo({ children, ...restProps }) {
+    return <Video {...restProps}>{children}</Video>
+}
+
+
 Feature.Link = function FeatureLink({ children, ...restProps }) {
     return <Link {...restProps}>{children}</Link>
 }
@@ -39,4 +44,9 @@ Feature.Link = function FeatureLink({ children, ...restProps }) {
 
 Feature.Text = function FeatureText({ children, ...restProps }) {
     return <Text {...restProps}>{children}</Text>
+}
+
+
+Feature.ButtonLink = function FeatureButtonLink({ children, ...restProps }) {
+    return <ButtonLink {...restProps}>{children}</ButtonLink>
 }

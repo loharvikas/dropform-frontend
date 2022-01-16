@@ -9,6 +9,8 @@ const Home = React.lazy(() => import('./pages/Home'))
 const Product = React.lazy(() => import('./pages/Product'))
 const Signin = React.lazy(() => import('./pages/Signin'))
 const Signup = React.lazy(() => import('./pages/Signup'))
+const TermsOfUse = React.lazy(() => import('./pages/TermsOfUse'))
+const Privacy = React.lazy(() => import('./pages/Privacy'))
 
 function App() {
   return (
@@ -23,6 +25,22 @@ function App() {
                 element={
                   <IsRedirectUser loggedInPath={ROUTES.REDIRECT}>
                     <Home />
+                  </IsRedirectUser>
+                }
+              />
+              <Route
+                path={ROUTES.TERMS_OF_USE}
+                element={
+                  <IsRedirectUser loggedInPath={ROUTES.REDIRECT}>
+                    <TermsOfUse />
+                  </IsRedirectUser>
+                }
+              />
+              <Route
+                path={ROUTES.PRIVACY_POLICY}
+                element={
+                  <IsRedirectUser loggedInPath={ROUTES.REDIRECT}>
+                    <Privacy />
                   </IsRedirectUser>
                 }
               />

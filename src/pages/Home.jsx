@@ -117,7 +117,6 @@ const SectionWrapper = styled.div`
     width: 75%;
     margin: 50px auto;
     padding: 0;
-    border: 1px solid green;
     @media screen and (max-width: 1000px) {
         width: 80%;
     }

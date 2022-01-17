@@ -24,7 +24,7 @@ export const Frame = styled.div`
     height: 100%;
 
     @media only screen and (max-width: 800px) {
-        margin: 0 30px;
+        margin: 0 20px;
     }
 `
 

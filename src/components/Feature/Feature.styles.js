@@ -37,7 +37,8 @@ export const Group = styled.div`
     }
 
     @media screen and (max-width: 500px) {
-        font-size: 8px;
+        font-size: 7px;
+        margin-left: 30px;
     }
 `;
 

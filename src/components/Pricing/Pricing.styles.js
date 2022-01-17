@@ -38,7 +38,7 @@ export const Container = styled.div`
     }
 
     @media screen and (max-width: 600px) {
-        max-width: 500px;
+        width: 100%;
     }
 
 `;

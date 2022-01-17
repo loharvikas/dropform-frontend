@@ -6,7 +6,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 500px;
+    width: 300px;
     padding: 30px 20px;
     height: 550px;
     margin-top: auto;
@@ -36,11 +36,20 @@ export const Container = styled.div`
             color: var(--WHITE-999);
         }
     }
+
+    @media screen and (max-width: 600px) {
+        max-width: 500px;
+    }
+
 `;
 
 export const Title = styled.h2`
-
     margin-bottom: 10px;
+
+
+    @media screen and (max-width: 600px) {
+        font-size: 40px;
+    }
 `;
 
 export const Text = styled.p`

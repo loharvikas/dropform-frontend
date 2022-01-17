@@ -14,6 +14,7 @@ import axiosInstance from '../lib/axios';
 const Product = () => {
     const [workspaceList, setWorkspaceList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [toggle, setToggle] = useState(false);
     const { logOut, user } = useContext(AuthContext);
 
     const sendActivationEmail = () => {
@@ -22,11 +23,11 @@ const Product = () => {
             .post(`users/send-activation-email/`)
             .then((res) => {
                 setLoading(false);
-                console.log({ res })
+                setToggle(true);
             })
             .catch((err) => {
                 setLoading(false);
-                console.log({ err })
+                setToggle(true);
             })
     }
 
@@ -65,9 +66,16 @@ const Product = () => {
                             <Alert.Text>
                                 Please verify your email with the link we sent to <b style={{ textDecoration: 'underline', color: 'black' }}>{`${user.email}`}</b>
                             </Alert.Text>
-                            <Alert.Button onClick={sendActivationEmail}>
-                                Send verification token
-                            </Alert.Button>
+                            {
+                                toggle ?
+                                    <Alert.Button onClick={sendActivationEmail}>
+                                        Send again
+                                    </Alert.Button>
+                                    :
+                                    <Alert.Button onClick={sendActivationEmail}>
+                                        Send verification token
+                                    </Alert.Button>
+                            }
                         </Alert.Frame>
                     </Alert>
                 }

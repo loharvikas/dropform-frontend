@@ -8,6 +8,7 @@ export const Container = styled.div`
   max-width: 500px;
   flex-direction: column;
   padding-top: 30px;
+
 `;
 
 export const Column = styled.div`
@@ -19,6 +20,11 @@ export const Column = styled.div`
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 600px) {
+      flex-direction: column;
+      align-items: center;
+  }
 `;
 
 export const Link = styled(ReactRouterLink)`
@@ -26,6 +32,7 @@ export const Link = styled(ReactRouterLink)`
   margin-bottom: 20px;
   font-size: 18px;
   text-decoration: none;
+
 `;
 
 export const Title = styled.p`

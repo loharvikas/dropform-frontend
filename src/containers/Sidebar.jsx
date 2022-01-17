@@ -28,15 +28,12 @@ const SidebarContainer = ({ workspaceList, setWorkspaceList }) => {
         axiosInstance
             .get(`workspace/${user.id}`)
             .then(res => {
-                console.log('SOME RES AT SIDEBAR')
                 if (res?.status === 200) {
                     setWorkspaceList(res.data);
                 }
             })
             .catch(error => {
-                console.log('COULD BE AN ERROR AT SIDEBAR')
                 if (error?.response?.status === 401) {
-                    console.log('$404 at sidebar')
                     updateTokens();
                 }
             });

@@ -8,7 +8,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding: 10px 0;
-    position: absolute;
+    position: sticky;
     top:50px;
     left:0;
     right:0;
@@ -27,8 +27,9 @@ export const Container = styled.div`
 `
 
 export const Frame = styled.div`
+    max-width: 1200px;
     display:flex;
-    width: 60%;
+    width: 50%;
     justify-content: space-between;
     align-items: center;
 `

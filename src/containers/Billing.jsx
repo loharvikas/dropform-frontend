@@ -61,12 +61,15 @@ const BillingContainer = () => {
 const Wrapper = styled.div`
     width: 100%;
     height: 100%;
-    /* background: var(--WHITE-999); */
     padding: 10px 5px;
     border-radius: 3px;
     display: flex;
     flex-direction: ${({ direction }) => direction};
     justify-content: space-between;
+
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
 `;
 
 const FormWrapper = styled.div`

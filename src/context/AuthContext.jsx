@@ -23,12 +23,10 @@ export const AuthProvider = ({ children }) => {
 
     const updateTokens = useCallback(() => {
         const refreshToken = authTokens?.refresh_token;
-        console.log("CALLED UPADETE TOKENS")
         axiosInstance
             .post('token/refresh/', { refresh: refreshToken })
             .then(res => {
                 if (res.status === 200) {
-                    console.log('WAHTERERERER')
                     const newAuthTokens = {
                         refresh_token: refreshToken,
                         access_token: res.data.access
@@ -38,9 +36,7 @@ export const AuthProvider = ({ children }) => {
                 }
             })
             .catch(err => {
-                console.log("SOME ERRERERE")
                 if (err?.response?.status === 401) {
-                    console.log("NEW ERRRRR")
                     logOut();
                 }
             })
@@ -64,7 +60,6 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (authTokens) {
-            console.log('%c UseEffect called', "color: green")
             const decoded = jwt_decode(authTokens.access_token);
             const expiryDate = decoded.exp * 1000
             if (Date.now() >= expiryDate) {
@@ -78,8 +73,6 @@ export const AuthProvider = ({ children }) => {
                     })
                     .catch(err => {
                         if (err?.response?.status === 404 || err?.response?.status === 401) {
-                            console.log('%c STATUS 404 ', "color: yellow");
-                            console.log({ err })
                             logOut();
                         }
                     })
@@ -92,7 +85,7 @@ export const AuthProvider = ({ children }) => {
         <GoogleLogin
             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
             onSuccess={onGoogleLoginSuccess}
-            onFailure={({ details }) => console.log(details)}
+            onFailure={({ details }) => details}
             render={renderProps => (
                 <GoogleButton {...renderProps}>
                     <GoogleLogoSVG />

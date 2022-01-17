@@ -174,7 +174,7 @@ const DeleteEndpoint = ({ formId, setToggle }) => {
             .then(res => {
                 setToggle(false)
             })
-            .catch(err => console.log(err))
+            .catch(err => err)
     }
 
     return (

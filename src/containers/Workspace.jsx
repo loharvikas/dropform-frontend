@@ -28,13 +28,11 @@ const WorkspaceContainer = ({ workspaceList, setWorkspaceList }) => {
         axiosInstance
             .get(`forms/${workspaceId}/`)
             .then(res => {
-                console.log('RESPONSE WOTKSPACE')
                 setLoading(false);
                 setForms(res.data)
             })
             .catch((err) => {
                 if (err?.response?.status === 401) {
-                    console.log('LOGOUT WORKSPCAE')
                     logOut();
                 }
                 setLoading(false);
@@ -131,7 +129,7 @@ const DeleteWorkspace = ({ workspace, setToggle, setWorkspaceList }) => {
                 setToggle(false);
                 setWorkspaceList(prevState => prevState.filter(item => item.id !== workspace.id))
             })
-            .catch(err => console.log(err))
+            .catch(err => err)
     }
 
     return (

@@ -15,7 +15,11 @@ const Home = () => {
                     <Feature backgroundColor='transparent'>
                         <Feature.Frame>
                             <Feature.Group>
-                                <Feature.Title fontSize='11rem' lineHeight='9rem' fontColor='var(--BLUE-900)'>
+                                <Feature.Title
+                                    fontSize='14em'
+                                    lineHeight='13rem'
+                                    fontColor='var(--BLUE-900)'
+                                >
                                     Better way to create form
                                 </Feature.Title>
                                 <Feature.Text fontSize='30px' lineHeight='30px' margin='30px 40px'>
@@ -67,9 +71,6 @@ const Home = () => {
                     <Feature backgroundColor='var(--PRIMARY-500)'>
                         <div style={{ margin: '70px' }}>
                             <Feature.Frame>
-                                <Feature.Group>
-
-                                </Feature.Group>
                                 <Feature.SubTitle color='var(--WHITE-999)' fontSize='30px'>
                                     Ready to create endpoints for you form?
                                 </Feature.SubTitle>
@@ -116,8 +117,19 @@ const SectionWrapper = styled.div`
     width: 75%;
     margin: 50px auto;
     padding: 0;
+    border: 1px solid green;
+    @media screen and (max-width: 1000px) {
+        width: 80%;
+    }
 
-    
+    @media screen and (max-width: 800px) {
+        width: 90%;
+    }
+
+    @media screen and (max-width: 650px) {
+        width: 95%;
+        margin: 20px auto;
+    }
 `
 
 const Button = styled(ReactRouterLink)`

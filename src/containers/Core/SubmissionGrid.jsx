@@ -128,7 +128,6 @@ const GridContainter = ({ setLoading, rows, columns, fetchData, count }) => {
 
 const InfoContainer = ({ value, setToggle }) => {
     const info = Object.entries(value)
-    console.log({ info });
     return (
         <Modal>
             <Modal.Inner>

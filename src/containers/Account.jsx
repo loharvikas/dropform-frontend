@@ -38,13 +38,11 @@ const InformationForm = ({ user, setUser }) => {
             .put(`users/update/${user.id}/`, { email: email, full_name: name })
             .then(res => {
                 setLoading(false);
-                console.log({ res })
                 setUser(res.data);
                 setMessage({ data: 'Your information is successfully upadted!', type: 'Success' })
                 setTimeout(() => setMessage(''), 3000)
             })
             .catch(err => {
-                console.log(err);
                 setLoading(false);
                 setMessage({ data: 'Invalid data!', type: 'Error' });
                 setTimeout(() => setMessage(''), 3000)
@@ -114,14 +112,12 @@ const PasswordForm = ({ user }) => {
         axiosInstance
             .put('users/password-change/', payload)
             .then(res => {
-                console.log({ res })
                 setLoading(false)
                 setNewPassword('');
                 setCurrentPassword('');
                 setMessage({ data: 'Password updated successfully!', type: 'Success' });
             })
             .catch(err => {
-                console.log({ err });
                 setNewPassword('');
                 setLoading(false);
                 setCurrentPassword('');

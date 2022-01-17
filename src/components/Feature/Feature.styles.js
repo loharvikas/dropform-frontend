@@ -15,6 +15,10 @@ export const Frame = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+  }
 `;
 
 export const Group = styled.div`
@@ -22,9 +26,18 @@ export const Group = styled.div`
     flex-direction: column;
     margin-bottom: 30px;
     margin-right: ${({ marginRight }) => marginRight};
+    position: relative;
 
     &:last-of-type {
         margin-bottom: 0px;
+    }
+
+    @media screen and (max-width: 600px) {
+        font-size: 14px;
+    }
+
+    @media screen and (max-width: 500px) {
+        font-size: 8px;
     }
 `;
 
@@ -38,6 +51,14 @@ export const Title = styled.h1`
     font-weight: bold;
     ::selection {
         color:pink;
+    }
+
+    @media screen and (max-width: 600px) {
+        line-height: 10rem;
+    }
+
+    @media screen and (max-width: 500px) {
+        line-height: 6rem;
     }
 `;
 

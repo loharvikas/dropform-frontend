@@ -49,9 +49,11 @@ export const LogoText = styled.h1`
     margin-left:10px;
     color: var(--BLUE-900);
     font-size: 20px;
+
+    @media screen and (max-width: 550px) {
+        display: none;
+    } 
 `
-
-
 
 export const LinkText = styled(ReactRouterNavLink)`
     cursor: pointer;

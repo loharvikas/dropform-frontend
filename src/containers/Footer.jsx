@@ -8,7 +8,7 @@ export default function FooterContainer() {
             <Footer.Break />
             <Footer.Row>
                 <Footer.Column>
-                    <Footer.Link to={ROUTES.TERMS_OF_USE}>Pricing</Footer.Link>
+                    <Footer.Link to='#'>Pricing</Footer.Link>
                 </Footer.Column>
 
                 <Footer.Column>

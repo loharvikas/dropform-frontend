@@ -4,6 +4,7 @@ import { ProtectedRoutes, IsRedirectUser } from './utils/routes';
 import { AuthProvider } from './context/AuthContext';
 import { Loader } from './globalStyles';
 import * as ROUTES from './constants/routes';
+import { NotFound } from './pages';
 
 const Home = React.lazy(() => import('./pages/Home'))
 const Product = React.lazy(() => import('./pages/Product'))
@@ -11,6 +12,7 @@ const Signin = React.lazy(() => import('./pages/Signin'))
 const Signup = React.lazy(() => import('./pages/Signup'))
 const TermsOfUse = React.lazy(() => import('./pages/TermsOfUse'))
 const Privacy = React.lazy(() => import('./pages/Privacy'))
+// const NotFound = React.lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
@@ -64,6 +66,11 @@ function App() {
                   <IsRedirectUser loggedInPath={ROUTES.REDIRECT}>
                     <Signup />
                   </IsRedirectUser>}
+              />
+              <Route path='*'
+                element={
+                  <NotFound />
+                }
               />
             </Routes>
           </React.Suspense>

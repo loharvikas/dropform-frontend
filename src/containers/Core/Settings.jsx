@@ -18,6 +18,7 @@ const initialState = {
 export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
     const [formName, setFormName] = useState('');
     const [description, setDescription] = useState('');
+    const [redirectURL, setRedirectURL] = useState('');
     const [active, setActive] = useState(true);
     const [alert, setAlert] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -31,7 +32,8 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
             .get(`forms/detail/${formId}/`)
             .then(res => {
                 setFormName(res.data.name);
-                setDescription(res.data.description)
+                setDescription(res.data.description);
+                setRedirectURL(res.data.redirect_url)
                 setActive(res.data.active);
                 setAlert(res.data.alert);
                 setGlobalLoading(false);
@@ -49,6 +51,7 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
         const payload = {
             'name': formName,
             'description': description,
+            'redirect_url': redirectURL,
             'active': active,
             'alert': alert
         }
@@ -147,9 +150,10 @@ export const SettingsContainer = ({ formId, setLoading: setGlobalLoading }) => {
                             id='redirect'
                             type='text'
                             formType='subForm'
-                            placeholder='Enter redirect url..'
-                            value={formName}
-                            onChange={({ target }) => setFormName(target.value)}
+                            placeholder='e.g https://www.redirect.com/'
+                            value={redirectURL}
+                            pattern="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})"
+                            onChange={({ target }) => setRedirectURL(target.value)}
                         />
                     </Group>
                     <Frame>

@@ -25,7 +25,7 @@ const FormContainer = () => {
     if (process.env.REACT_APP_DEVELOPMENT_MODE === 'true') {
       websocket_url = `ws://localhost:8000/ws/form/${formId}/`
     } else {
-      websocket_url = `wss://api.dropform.co/ws/form/${formId}/`
+      websocket_url = `ws://api.dropform.co/ws/form/${formId}/`
     }
     console.log(websocket_url)
     ws = new WebSocket(websocket_url);

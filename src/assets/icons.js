@@ -110,7 +110,7 @@ export const CheckSVG = () => (
 // ---------------------------------------
 
 export const CopyClipboardSVG = () => (
-    <svg margin="[object Object]" aria-hidden="true" class="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-svg Icon--clipboard-svg Icon-color-svg Icon-color--gray-svg" height="15" width="15" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M7 5h2a3 3 0 0 0 3-3 2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2 3 3 0 0 0 3 3zM6 2a2 2 0 1 1 4 0 1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z" fillRule="evenodd"></path></svg>
+    <svg margin="[object Object]" aria-hidden="true" className="SVGInline-svg SVGInline--cleaned-svg SVG-svg Icon-svg Icon--clipboard-svg Icon-color-svg Icon-color--gray-svg" height="15" width="15" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M7 5h2a3 3 0 0 0 3-3 2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2 3 3 0 0 0 3 3zM6 2a2 2 0 1 1 4 0 1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z" fillRule="evenodd"></path></svg>
 )
 
 // ---------------------------------------
@@ -123,4 +123,10 @@ export const OpenSVG = () => (
 
 export const CloseSVG = () => (
     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clip-rule="evenodd"><path d="M0 12v1h23v-1h-23z" /></svg>
+)
+
+// ---------------------------------------
+
+export const DownloadSVG = () => (
+    <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">    <path d="M19.355,10.036C18.674,6.595,15.641,4,12,4C9.108,4,6.603,5.639,5.352,8.036C2.343,8.36,0,10.906,0,14c0,3.314,2.686,6,6,6 h13c2.761,0,5-2.239,5-5C24,12.36,21.948,10.221,19.355,10.036z M12,18l-5-5h3V9h4v4h3L12,18z" /></svg>
 )

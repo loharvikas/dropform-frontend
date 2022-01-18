@@ -45,7 +45,7 @@ const Product = () => {
             />
             <SideBarBreak />
             <InnerWrapper direction='column'>
-                <Header main='false'>
+                <Header borderBottom='var(--BORDER-SECONDARY)'>
                     <Header.Frame>
                         <Header.Group>
                             <Header.LinkText to={ROUTES?.DASHBOARD} >Dashboard</Header.LinkText>

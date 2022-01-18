@@ -7,9 +7,10 @@ export const Container = styled.div`
     display: flex;
     margin: 0;
     flex-direction: column;
-    background-color: var(--PURPLE-100);
+    background-color: ${({ backgroundColor }) => backgroundColor ? backgroundColor : 'var(--WHITE-999)'};
     position: sticky;
     height: ${({ main }) => main === 'true' ? '70px' : '50px'};
+    border-bottom: ${({ borderBottom }) => borderBottom};
     top: 0;
     right: 0;
     z-index: 999;

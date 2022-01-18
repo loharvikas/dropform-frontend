@@ -29,7 +29,7 @@ export const Container = styled.div`
 export const Frame = styled.div`
     max-width: 1200px;
     display:flex;
-    width: 50%;
+    width: 70%;
     justify-content: space-between;
     align-items: center;
 `

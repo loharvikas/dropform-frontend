@@ -7,7 +7,7 @@ import * as STYLES from '../constants/styles';
 
 const HeaderContainer = () => {
     return (
-        <Header main='true'>
+        <Header backgroundColor='var(--PURPLE-100)'>
             <Header.Frame>
                 <Header.Group>
                     <Header.LogoText LogoSvg={LogoSVG} to={ROUTES.HOME}>DropForm</Header.LogoText>

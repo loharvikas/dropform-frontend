@@ -7,6 +7,7 @@ import GridContainter from './SubmissionGrid';
 import { getDatetime } from '../../utils/helper';
 import axiosInstance from '../../lib/axios';
 import APIViewContainer from './APIView';
+import { DownloadSVG } from '../../assets/icons';
 
 let ws = '';
 
@@ -25,9 +26,8 @@ const FormContainer = () => {
     if (process.env.REACT_APP_DEVELOPMENT_MODE === 'true') {
       websocket_url = `ws://localhost:8000/ws/form/${formId}/`
     } else {
-      websocket_url = `ws://api.dropform.co/ws/form/${formId}/`
+      websocket_url = `wss://api.dropform.co/ws/form/${formId}/`
     }
-    console.log(websocket_url)
     ws = new WebSocket(websocket_url);
     fetchData() //eslint-disable-next-line
   }, [formId])
@@ -47,6 +47,11 @@ const FormContainer = () => {
         for (let j = 0; j < f.length; j++) {
           newFields.add(f[j])
         }
+        const files = res[i].files
+        for (let j = 0; j < files.length; j++) {
+          const name = files[j].name + '_FILE';
+          newFields.add(name);
+        }
       }
 
       if (!newFields.has('created_date')) {
@@ -58,14 +63,31 @@ const FormContainer = () => {
 
       newFields.forEach(item => {
         const hName = item === 'created_date' ? 'Submitted on' : item
-        columns.push({
-          field: item, headerName: hName, headerAlign: 'left',
-          headerClassName: 'table-header', flex: 1, minWidth: 150,
-        })
+        if (item.substring(item.length - 4) === 'FILE') {
+          columns.push({
+            field: item, headerName: item.substring(0, item.length - 5), headerAlign: 'left',
+            headerClassName: 'table-header', flex: 1, minWidth: 150,
+            renderCell: (params) => {
+              const value = params.row[item.substring(0, item.length - 5)]
+              return <a href={value} value='_blank' download><DownloadSVG /></a>;
+            }
+          })
+        } else {
+          columns.push({
+            field: item, headerName: hName, headerAlign: 'left',
+            headerClassName: 'table-header', flex: 1, minWidth: 150,
+          })
+        }
       })
 
       for (let i = 0; i < res.length; i++) {
-        rows.push({ ...res[i].fields, 'created_date': getDatetime(res[i].created_date), id: res[i].id })
+        const fileData = {}
+        const files = res[i].files
+        for (let j = 0; j < files.length; j++) {
+          const name = files[j].name;
+          fileData[name] = files[j].file_field;
+        }
+        rows.push({ ...res[i].fields, 'created_date': getDatetime(res[i].created_date), id: res[i].id, ...fileData })
       }
 
       if (resetData === true) {
@@ -86,15 +108,15 @@ const FormContainer = () => {
       .get(`f/${formId}/?page=${page}`)
       .then(res => {
         setCount(res.data.count)
-        constructTableProps(res.data.results, resetData)
+        constructTableProps(res.data, resetData)
         setTimeout(() => {
           setLoading(false);
-        }, 1000);
+        }, 500);
       })
       .catch(err => {
         setTimeout(() => {
           setLoading(false);
-        }, 1000);
+        }, 500);
         setLoading(false);
       })
   }

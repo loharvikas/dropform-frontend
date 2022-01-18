@@ -47,6 +47,8 @@ export const Title = styled.h1`
     color: ${({ fontColor }) => fontColor};
     font-size: ${({ fontSize }) => fontSize};
     line-height: ${(lineHeight) => lineHeight};
+    -webkit-background-clip: text;
+    background-clip: text;
     user-select: none;
     letter-spacing: 0px;
     font-weight: bold;
@@ -54,12 +56,33 @@ export const Title = styled.h1`
         color:pink;
     }
 
+    ${({ animateText }) => animateText === 'true' && `
+    background-image: linear-gradient(to left, #2ecc71, #3498db, #9b59b6, #f39c12);
+    animation: animate 10s linear infinite;
+    color: transparent;
+    background-size: 500%;
+    `}
+
     @media screen and (max-width: 600px) {
         line-height: 10rem;
     }
 
     @media screen and (max-width: 500px) {
         line-height: 6rem;
+    }
+
+    @keyframes animate {
+        0%{
+            background-position: 0 100%;
+        }
+
+        50% {
+            background-position: 100% 0;
+        }
+        
+        100%{
+            background-position: 0 100%;
+        }
     }
 `;
 

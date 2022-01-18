@@ -171,6 +171,10 @@ export const Input = styled.input`
         margin-bottom:0px;
     `}
 
+    &:invalid{
+        border: 1px solid var(--RED-500);
+    }
+
 `;
 
 export const TextArea = styled.textarea`

@@ -18,7 +18,7 @@ const Home = () => {
                                 <Feature.Title
                                     fontSize='11em'
                                     lineHeight='9rem'
-                                    fontColor='var(--BLUE-900)'
+                                    animateText='true'
                                 >
                                     Better way to create form
                                 </Feature.Title>

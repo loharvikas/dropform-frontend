@@ -26,7 +26,7 @@ const SidebarContainer = ({ workspaceList, setWorkspaceList }) => {
 
     useEffect(() => {
         axiosInstance
-            .get(`workspace/${user.id}`)
+            .get(`workspace/${user.id}/`)
             .then(res => {
                 if (res?.status === 200) {
                     setWorkspaceList(res.data);

@@ -12,7 +12,7 @@ export default function FooterContainer() {
                 </Footer.Column>
 
                 <Footer.Column>
-                    <Footer.Link to="#">Contact Us</Footer.Link>
+                    <Footer.AnchorLink href="mailto: loharvikas13@dropform.co">Contact Us</Footer.AnchorLink>
                 </Footer.Column>
 
                 <Footer.Column>

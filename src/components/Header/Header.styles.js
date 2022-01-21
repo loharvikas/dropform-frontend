@@ -27,6 +27,10 @@ export const Frame = styled.div`
     @media only screen and (max-width: 800px) {
         margin: 0 20px;
     }
+
+    @media only screen and (max-width: 600px) {
+        margin: 0 5px;
+    }
 `
 
 export const Group = styled.div`

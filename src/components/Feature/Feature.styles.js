@@ -68,7 +68,7 @@ export const Title = styled.h1`
     }
 
     @media screen and (max-width: 500px) {
-        line-height: 6rem;
+        line-height: 4rem;
     }
 
     @keyframes animate {

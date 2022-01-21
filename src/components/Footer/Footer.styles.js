@@ -34,6 +34,13 @@ export const Link = styled(ReactRouterLink)`
 
 `;
 
+export const AnchorLink = styled.a`
+  color: var(--WHITE-999);
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-decoration: none;
+`;
+
 export const Title = styled.p`
   font-size: 16px;
   color: #757575;

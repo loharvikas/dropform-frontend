@@ -39,3 +39,8 @@ button {
     cursor: pointer;
     border-radius: 5px;
 }
+
+img {
+    max-width: 1080px;
+    height: 700px;
+}

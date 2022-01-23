@@ -111,7 +111,7 @@ const FormContainer = () => {
       .then(res => {
         setCount(res.data.count)
         console.log(res.data)
-        constructTableProps(res.data, resetData)
+        constructTableProps(res.data.results, resetData)
         setTimeout(() => {
           setLoading(false);
         }, 500);

@@ -64,7 +64,7 @@ export const Title = styled.h1`
     `}
 
     @media screen and (max-width: 600px) {
-        line-height: 10rem;
+        line-height: 7rem;
     }
 
     @media screen and (max-width: 500px) {

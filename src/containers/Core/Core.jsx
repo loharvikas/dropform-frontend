@@ -41,6 +41,8 @@ const FormContainer = () => {
 
   const constructTableProps = (res, resetData) => {
     if (res.length >= 0) {
+      console.log('REWSET:')
+      console.log(resetData)
       const newFields = new Set(fields);
       for (let i = 0; i < res.length; i++) {
         const f = Object.keys(res[i].fields);
@@ -102,12 +104,13 @@ const FormContainer = () => {
     }
   }
 
-  const fetchData = (resetData = false, page = 1) => {
+  const fetchData = (resetData = true, page = 1) => {
     setLoading(true);
     axiosInstance
       .get(`f/${formId}/?page=${page}`)
       .then(res => {
         setCount(res.data.count)
+        console.log(res.data)
         constructTableProps(res.data, resetData)
         setTimeout(() => {
           setLoading(false);

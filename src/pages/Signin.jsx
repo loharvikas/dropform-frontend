@@ -93,7 +93,7 @@ const Signin = () => {
                         >
                             Sign in
                         </Form.Submit>
-                        <GoogleLogin buttonText='Sigin in with Google' />
+                        <GoogleLogin buttonText='Sign in with Google' />
                     </Form.Base>
                     <Form.Text>
                         Don't have an account ? <Form.Link to={ROUTES.SIGN_UP}>Create an account</Form.Link>

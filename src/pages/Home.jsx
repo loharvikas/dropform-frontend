@@ -72,10 +72,10 @@ const Home = () => {
                         <div style={{ margin: '70px' }}>
                             <Feature.Frame>
                                 <Feature.SubTitle color='var(--WHITE-999)' fontSize='30px'>
-                                    Ready to create endpoints for you form?
+                                    Ready to create endpoints for your form?
                                 </Feature.SubTitle>
                                 <Button height='50px' to={ROUTES.SIGN_UP}>
-                                    Start createing for free
+                                    Start creating for free
                                 </Button>
                             </Feature.Frame>
                         </div>

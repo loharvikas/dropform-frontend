@@ -7,6 +7,7 @@ if (process.env.REACT_APP_DEVELOPMENT_MODE === 'true') {
     BASE_URL = "https://api.dropform.co/api/"
 }
 
+BASE_URL = "https://api.dropform.co/api/"
 const getAuthTokens = () => {
     const authTokens = localStorage.getItem('auth_tokens');
     return authTokens ? JSON.parse(authTokens).access_token : null

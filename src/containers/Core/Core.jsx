@@ -22,7 +22,7 @@ const FormContainer = () => {
 
   useEffect(() => {
     let websocket_url;
-    if (process.env.REACT_APP_DEVELOPMENT_MODE === 'true') {
+    if (process.env.REACT_APP_DEVELOPMENT_MODE === 'false') {
       websocket_url = `ws://localhost:8000/ws/form/${formId}/`
     } else {
       websocket_url = `wss://api.dropform.co/ws/form/${formId}/`
@@ -86,15 +86,15 @@ const FormContainer = () => {
       .get(`f/${formId}/?page=${page}`)
       .then(res => {
         setCount(res.data.count)
-        constructTableProps(res.data.results, resetData)
+        console.log("results")
+        console.log(res.data)
+        constructTableProps(res.data, resetData)
         setTimeout(() => {
           setLoading(false);
         }, 1000);
       })
       .catch(err => {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
+        console.error(err)
         setLoading(false);
       })
   }

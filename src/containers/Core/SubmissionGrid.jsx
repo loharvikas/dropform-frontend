@@ -83,7 +83,7 @@ const GridContainter = ({ setLoading, rows, columns, fetchData, count }) => {
                     onClick={handleClickButton}
                     style={{
                         width: '100px', marginLeft: 'auto', marginRight: '20px',
-                        position: 'absolute', top: '90px', right: '20px'
+                        position: 'absolute', top: '150px', right: '20px'
                     }}
                 >
                     Delete

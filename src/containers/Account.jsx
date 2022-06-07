@@ -25,7 +25,7 @@ const Group = styled.div`
 
 const InformationForm = ({ user, setUser }) => {
     const [email, setEmail] = useState(user.email);
-    const [name, setName] = useState(user.full_name);
+    const [name, setName] = useState(user.full_name || '');
     const [message, setMessage] = useState({ data: '', type: '' });
     const [loading, setLoading] = useState(false)
 
@@ -38,7 +38,7 @@ const InformationForm = ({ user, setUser }) => {
             .put(`users/update/${user.id}/`, { email: email, full_name: name })
             .then(res => {
                 setLoading(false);
-                setUser(res.data);
+                setUser(res.data || '');
                 setMessage({ data: 'Your information is successfully upadted!', type: 'Success' })
                 setTimeout(() => setMessage(''), 3000)
             })
